@@ -3,7 +3,7 @@ title: "¡Bienvenidos!"
 date: 2020-06-06T02:45:19-06:00
 hero: /uploads/content/2020/2020-bienvenidos/2020-bienvenidos-cover.png
 excerpt:  Breve descripción del articulo...
-draft: true
+draft: false
 authors:
     - Angelo Ortiz Vega
 ---
