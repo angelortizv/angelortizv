@@ -2,7 +2,7 @@
 title: "¡Bienvenidos!"
 date: 2020-06-06T02:45:19-06:00
 hero: /uploads/content/2020/2020-bienvenidos/2020-bienvenidos-cover.png
-excerpt:  Breve descripción del articulo...
+excerpt:  Espero que este blog sirva como espacio para reflexionar y generarar conversación sobre ideas que me hacen vibrar
 draft: false
 authors:
     - Angelo Ortiz Vega
@@ -34,9 +34,7 @@ De este modo, espero que este blog sirva como espacio para reflexionar y generar
 
 ###### Gracias por leer!
 
-.
-.
-.
+>>>
 
 
 {{< subscribe email="angelo2898@gmail.com" >}}
