@@ -8,15 +8,16 @@ public_folder: "uploads"
 
 collections:
     - name: "post"
-        folder: "content/post"
-        create: true
-        slug: "{{year}}-{{slug}}"
-        fields: 
-            - {label: "Title", name: "title", widget: "string"}
-            - {label: "Hero Image", name: "hero", widget: image, required: true}
-            - {label: "Excerpt", name: "excerpt", widget: "string"}
-            - {label: "Draft", name: "draft", widget: "boolean", default: true}
-            - {label: "Authors", name: "authors", widget: hidden, default: Angelo Ortiz Vega}
+      label: "posts"
+      folder: "content/post"
+      create: true
+      slug: "{{year}}-{{slug}}"
+      fields: 
+        - {label: "Title", name: "title", widget: "string"}
+        - {label: "Hero Image", name: "hero", widget: image, required: true}
+        - {label: "Excerpt", name: "excerpt", widget: "string"}
+        - {label: "Draft", name: "draft", widget: "boolean", default: true}
+        - {label: "Authors", name: "authors", widget: hidden, default: Angelo Ortiz Vega}
             
 
 
