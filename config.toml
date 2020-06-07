@@ -1,7 +1,7 @@
 baseURL = ""
 languageCode = "en-US"
 title = "angelortizv "
-theme = "novela"
+theme = "hugo-theme-novela"
 paginate = 6
 enableRobotsTXT = true
 canonifyURLs = true
