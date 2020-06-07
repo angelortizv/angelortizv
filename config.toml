@@ -1,0 +1,30 @@
+baseURL = ""
+languageCode = "en-US"
+title = "angelortizv "
+theme = "novela"
+paginate = 6
+enableRobotsTXT = true
+canonifyURLs = true
+enableEmoji = true
+
+[social] 
+    github = "https://github.com/angelortizv"
+    facebook = "https://facebook.com/angelortizcr"
+    instagram = "https://instagram.com/angelortizv"
+    linkedin = "http://linkedin.com/in/angelortizv/"
+
+[menu]
+    [[menu.main]]
+        identifier = "about"
+        Name = "About"
+        url = "/about/"
+        weight = 0
+
+    [taxonomies]
+        tag = "tags"
+        author = "authors"
+        preserveTaxonomyNames = true
+        
+    [permalinks]
+        post = "/blog/:title/"
+
