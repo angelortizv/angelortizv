@@ -2,7 +2,8 @@
 title: "Frases Que Inspiran"
 date: 2021-01-03T20:21:48-06:00
 hero: /uploads/content/2021/2021-frases-que-inspiran.png
-excerpt:  Breve descripción del articulo...
+excerpt:  
+    "Defendemos lo que creemos, lo que pensamos y lo que alguna vez oímos. A continuación presento un listado de frases que he reccopilado en el caminar, espero siga creciendo."
 draft: false
 authors:
     - Angelo Ortiz Vega
