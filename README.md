@@ -1,5 +1,3 @@
-![angelortizv-me profile](https://res.cloudinary.com/dlmw9e38c/image/upload/v1663477905/angelortizv/angelortizv.me-profile_ehbqbq.png)
-
 ## About Me
 
 I'm Angelo Ortiz Vega, a Computer Engineering Student based in Costa Rica. I enjoy creating things that live on the internet, whether that be websites, applications, or anything in between. My goal is to always build products that scale and impacts millions of people.
