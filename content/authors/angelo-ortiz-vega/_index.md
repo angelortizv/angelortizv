@@ -1,20 +1,18 @@
 ---
 title: Angelo Ortiz Vega
 bio: |
-  Angelo Ortiz Vega, costarricense, estudiante de Ingeniería en Computadores, músico amateur, desarrollador de tecnología. Entre otras cosas, joven promedio con sueños extraordinarios.
+  Angelo Ortiz Vega, persona común con ideas extraordinarias, costarricense, amante de la vida y la naturaleza, hijo de Alex y Rossy. Leal y trabajador por los suyos.
 bio2nd: |
-  Me siento muy afortunado de poder conectarme con tantas personas extraordinarias. Cada vez que tengo la oportunidad, dejo unos minutos de lo que estoy haciendo para compartir lo que estoy aprendiendo aquí en angelortizv.com, Gracias por leer.
+  Actualmente, soy estudiante avanzado de la carrera de Ingeniería en Computadores en el Tecnológico de Costa Rica. Trabajo como programador de software freelancer en diferentes proyectos y profesor de Experencia de Usuario (UX) en la Universidad Creativa. 
 bio3er: |
-  Mantente en contacto: angelo2898@gmail.com
-avatar: /uploads/angelortizv_defaultprofile.jpeg
+  Por mantenerme siempre activo, tengo la posibilidad de contarme con personas extraordinarias y aprender de ellas. Cada vez que tengo la oportunidad, dejo unos minutos de lo que estoy haciendo y humildemente intento compartir lo que estoy pensando, sintiendo o aprendeiendo sobre la vida. ¡Siempre gracias por leer!
+bio4th: |
+  Mantente en contacto: angelo@angelortizv.com
+avatar: /uploads/angelortizv_profile.jpg
 featured: true
 social:
   - title: github
     url: https://github.com/angelortizv
-  - title: facebook
-    url: https://facebook.com/angelortizcr
-  - title: instagram
-    url: https://instagram.com/angelortizv
   - title: linkedin
     url: http://linkedin.com/in/angelortizv/
 ---

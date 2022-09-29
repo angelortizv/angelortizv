@@ -5,7 +5,7 @@ hero: /uploads/content/2022/2022-cambiar-de-sueños.png
 excerpt: "Empezar a realizar las cosas tarde está bien, debemos de dejar de autosabotearnos pensando que la vida nos pasa factura y que estamos tarde para empezar cualquier aventura. Es más, empezar tarde hace que en cierto modo estemos más vacunado sobre la vida, que todo por lo que hemos pasado hasta el momento nos haya generado un callo para afrontar lo que está por venir."
 draft: false
 authors:
-  - Angelo Ortiz Vega
+    - Angelo Ortiz Vega
 ---
 
 Empezar a realizar las cosas tarde está bien, debemos de dejar de autosabotearnos pensando que la vida nos pasa factura y que estamos tarde para empezar una nueva aventura. Es más, empezar tarde hace que en cierto modo estemos más vacunados sobre la vida, que todo por lo que hemos pasado hasta el momento nos haya generado un callo para afrontar lo que está por venir.
