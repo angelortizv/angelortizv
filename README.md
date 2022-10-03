@@ -13,15 +13,20 @@ I always find myself learning new technologies that I consider important in a so
   <div>
       <br/>
        <ul>
+        <li>angelortizv.me</li>
+        <p align="center">
+          <a href="https://angelortizv.com/">
+          <img src="https://res.cloudinary.com/dek4evg4t/image/upload/v1664765951/angelortizv/angelortizv_me.png" alt="angelortizv :: portfolio" /></a>
+        </p>
         <li>angelortizv.com</li>
         <p align="center">
           <a href="https://angelortizv.com/">
-          <img src="https://res.cloudinary.com/dlmw9e38c/image/upload/v1663479008/angelortizv/angelortizv.com-photo_fhkwaf.png" alt="angelortizv :: Top Langs" /></a>
+          <img src="https://res.cloudinary.com/dlmw9e38c/image/upload/v1663479008/angelortizv/angelortizv.com-photo_fhkwaf.png" alt="angelortizv :: blog" /></a>
         </p>
          <li>CE-ITCR</li>
          <p align="center">
           <a href="https://ce-itcr.github.io">
-          <img src="https://res.cloudinary.com/dlmw9e38c/image/upload/v1663480331/angelortizv/ce-itcr_y6ee1p.png" alt="angelortizv :: Top Langs" /></a>
+          <img src="https://res.cloudinary.com/dlmw9e38c/image/upload/v1663480331/angelortizv/ce-itcr_y6ee1p.png" alt="angelortizv :: TEC Projects" /></a>
         </p>
        </ul>
      <br>
