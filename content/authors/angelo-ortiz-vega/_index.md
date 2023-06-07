@@ -1,11 +1,11 @@
 ---
 title: Angelo Ortiz Vega
 bio: |
-  Angelo Ortiz Vega, persona común con ideas extraordinarias. 
+  Persona común con ideas extraordinarias. 
 bio2nd: |
-  Actualmente, soy estudiante avanzado de la carrera de Ingeniería en Computadores en el Tecnológico de Costa Rica. Trabajo como programador de software freelancer en diferentes proyectos y profesor de Experencia de Usuario (UX) en la Universidad Creativa. 
-bio3er: |
-  Por mantenerme siempre activo, tengo la posibilidad de contarme con personas extraordinarias y aprender de ellas. Cada vez que tengo la oportunidad, dejo unos minutos de lo que estoy haciendo y humildemente intento compartir lo que estoy pensando, sintiendo o aprendeiendo sobre la vida. ¡Siempre gracias por leer!
+  En la actualidad, me encuentro en la etapa final de mis estudios en Ingeniería en Computadores en el Tecnológico de Costa Rica. Además, desempeño el rol de programador de software independiente en diversos proyectos, al mismo tiempo que soy profesor de Diseño de Experiencia de Usuario (UX) en la Universidad Creativa.
+bio3er: | 
+  Al mantenerme constantemente en movimiento, tengo la oportunidad de cruzarme con individuos excepcionales y absorber conocimientos de su experiencia. Cada vez que se presenta la ocasión, aparto unos minutos de mi ocupación para modestamente compartir mis reflexiones, emociones y aprendizajes acerca de la vida. ¡Siempre agradecido por tu lectura!
 bio4th: |
   Correo Electrónico: angelo@angelortizv.com 
 bio5th: |
