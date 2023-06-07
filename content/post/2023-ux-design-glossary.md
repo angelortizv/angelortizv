@@ -77,7 +77,7 @@ La experiencia del cliente, o CX, abarca toda la experiencia que tiene un client
 Dark UX no es un término con el que quieras asociarte como diseñador de UX. Es la práctica de diseñar deliberadamente de una manera que engañe al usuario o lo empuje sutilmente hacia una acción que probablemente no quiera realizar. Un ejemplo clásico de UX oscuro es que los usuarios se confundan al cancelar su suscripción.
 
 ### Design Patterns
-Los patrones de diseño de UX y UI son componentes de diseño repetibles y reutilizables que se utilizan para resolver problemas de usabilidad que los usuarios experimentan comúnmente. Por ejemplo, el sistema de navegación de migas de pan (número 13 en nuestro glosario de UX) es un patrón de diseño que se usa para mostrar al usuario su camino desde la página de inicio hasta la página que está viendo actualmente.
+Los patrones de diseño de UX y UI son componentes de diseño repetibles y reutilizables que se utilizan para resolver problemas de usabilidad que los usuarios experimentan comúnmente. Por ejemplo, el sistema de navegación de migas de pan es un patrón de diseño que se usa para mostrar al usuario su camino desde la página de inicio hasta la página que está viendo actualmente.
 
 ### Design Sprint
 Inventado por Jake Knapp, el design sprint es una práctica cada vez más popular que condensa y acelera el proceso de diseño de productos. La idea es construir y probar rápidamente un prototipo en solo cinco días, alentando a los equipos de diseño a pasar rápidamente del problema a la solución. Lego, N26, Uber y Google son solo algunas de las principales marcas que abogan por la metodología design sprint.
@@ -154,6 +154,21 @@ La gamificación es el proceso de integrar elementos y principios de diseño de 
 
 ### Gestalt
 Los principios de la Gestalt provienen del campo de la psicología y son esencialmente un conjunto de leyes que describen cómo nuestras mentes organizan e interpretan los datos visuales. Los principios de la Gestalt se pueden utilizar para informar las decisiones de diseño y dar forma a la experiencia del usuario. Por ejemplo, la ley de la proximidad establece que los elementos que se colocan juntos parecen estar más relacionados que los elementos que se encuentran más separados. Si estuviera diseñando un sitio web basado en la ley de la proximidad, agruparía los elementos relacionados más juntos.
+
+### Gestalt - Proximidad
+Los elementos que están cerca entre sí tienden a percibirse como un grupo o una unidad. Al aplicar esta ley, los diseñadores agrupan visualmente elementos relacionados y los separan de otros elementos para indicar su relación. 
+
+### Gestalt - Similaridad
+Los elementos que comparten características similares, como forma, color o tamaño, se perciben como parte de un grupo o patrón. La similitud visual se utiliza para agrupar elementos y comunicar su relación o función común.
+
+### Gestalt - Simetría
+Los elementos simétricos tienden a percibirse como más relacionados o equilibrados en comparación con aquellos que no tienen simetría. La simetría se puede utilizar para crear una sensación de orden y estabilidad en la interfaz.
+
+### Gestalt - Cierre
+Nuestra mente tiende a completar formas o patrones incompletos basándose en la información disponible. Al aprovechar esta ley, los diseñadores pueden sugerir formas o elementos ocultos y permitir que los usuarios completen la imagen mentalmente.
+
+### Gestalt - Continuidad
+Nuestra mente tiende a percibir líneas o curvas continuas en lugar de interrupciones o cambios bruscos. Al aplicar la continuidad, los diseñadores pueden guiar el flujo visual y crear una experiencia más fluida alineando elementos y líneas.
 
 ### Grid System
 Al diseñar, por ejemplo, una página en un sitio web, los diseñadores pueden seguir sistemas de cuadrícula para ayudarlos a organizar los diversos elementos de la página. Un sistema de cuadrícula es esencialmente una serie de filas y columnas que le brinda áreas visiblemente marcadas (similares a un mapa) en las que colocar diferentes elementos. Esto facilita el diseño consistente en diferentes páginas.
