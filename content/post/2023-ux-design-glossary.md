@@ -63,7 +63,7 @@ Una ruta de navegación (breadcrumb) es un sistema de navegación que muestra d�
 # C
 
 ### Card Sorting
-Card sorting es un método de investigación de UX que le brinda información sobre cómo los usuarios clasifican la información. En una sesión de clasificación de tarjetas, los participantes reciben tarjetas con diferentes etiquetas o temas escritos en ellas y se les pide que las organicen de una manera que se sienta lógica. La clasificación de tarjetas lo ayuda a diseñar la arquitectura de la información (IA) de un sitio web o una aplicación de acuerdo con las expectativas del usuario. Encontrará una explicación de la arquitectura de la información más adelante en nuestro glosario.
+Card sorting es un método de investigación de UX que le brinda información sobre cómo los usuarios clasifican la información. En una sesión de clasificación de tarjetas, los participantes reciben tarjetas con diferentes etiquetas o temas escritos en ellas y se les pide que las organicen de una manera que se sienta lógica. La clasificación de tarjetas lo ayuda a diseñar la arquitectura de la información (IA) de un sitio web o una aplicación de acuerdo con las expectativas del usuario. 
 
 ### Consistencia
 La consistencia es un principio clave en el diseño de UX. Establece que un diseño fácil de usar siempre brinda una experiencia consistente: una vez que el usuario está familiarizado con su producto, puede usarlo con facilidad; no necesitan aprender nuevas formas de completar tareas o resolver problemas en todo momento.
@@ -142,7 +142,7 @@ Figma es otra herramienta de diseño de UX popular que se utiliza para la creaci
 
 
 ### Flat Design - Diseño plano
-Flat design es un estilo o lenguaje de diseño que favorece los elementos simples en 2D y los colores brillantes. Mientras que el diseño skeuomorphic tiene que ver con la creación de una sensación realista en 3D, el diseño plano mantiene las cosas claras y simples. El diseño plano surgió originalmente para ayudar al diseño receptivo (consulte el número 73 en nuestro glosario de UX).
+Flat design es un estilo o lenguaje de diseño que favorece los elementos simples en 2D y los colores brillantes. Mientras que el diseño skeuomorphic tiene que ver con la creación de una sensación realista en 3D, el diseño plano mantiene las cosas claras y simples. El diseño plano surgió originalmente para ayudar al diseño receptivo.
 
 ### Focus Group
 Otro método de investigación de UX, los grupos focales reúnen a un puñado de usuarios para discutir problemas e inquietudes sobre las características de un producto. Los grupos focales son moderados por el investigador, pero para los participantes se sienten desestructurados y fluidos. Esto puede dar lugar a ideas muy sinceras y le permite recopilar una variedad de perspectivas.
