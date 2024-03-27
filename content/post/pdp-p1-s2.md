@@ -29,7 +29,7 @@ _**Comentario**_: Superar el miedo a estar solo es un aspecto fundamental del cr
 
 ## 2. **Autoevaluación y dirección**
 
-Se propuso que durante estas citas, los individuos reflexionen sobre su situación actual, hacia dónde se dirigen en la vida y qué recursos internos poseen para alcanzar sus metas. Se hizo referencia al concepto de "rat race" (carrera de ratas) y a la importancia de detenerse y evaluar el camino a seguir.
+Se propuso que durante estas citas, cada uno de los participantes reflexione sobre su situación actual, hacia dónde se dirigen en la vida y qué recursos internos poseen para alcanzar sus metas. Se hizo referencia al concepto de "rat race" (carrera de ratas) y a la importancia de detenerse y evaluar el camino a seguir.
 
 _**Comentario**_: Entender dónde nos encontramos en la vida, hacia dónde nos dirigimos y qué necesitamos para alcanzar nuestros objetivos es escencial para el crecimiento personal y el éxito en cualquier aspecto de la vida. Dentro de los puntos más importantes destaco que: 
 
@@ -62,10 +62,9 @@ _**Comentario**_: Estar presente en el momento presente nos ayuda a reducir el e
 
 El proyecto de vida se presenta como una **herramienta esencial para el mejoramiento INTEGRAL continuo de cada individuo**. Se destaca su naturaleza concreta y realista, lo que implica que debe ser establecido en términos tangibles y alcanzables. 
 
-Entre los objetivos principales del proyecto de vida se encuentra el brindar dirección y claridad en el proceso de desarrollo personal. Se enfatiza la importancia de dar el primer paso hacia nuestras metas, pero antes que eso, es crucial establecer una dirección clara y definida.
+Entre los objetivos principales del proyecto de vida se encuentra el brindar dirección y claridad en el proceso de desarrollo personal. Se enfatiza la importancia de **dar el primer paso hacia nuestras metas, pero antes que eso, es crucial establecer una dirección clara y definida.**
 
-Es importante destacar que **el proyecto de vida no sigue necesariamente una trayectoria lineal** y definitiva, sino que **puede estar sujeto a cambios y ajustes a lo largo del tiempo**, al igual que nosotros como individuos. Reconocer esta naturaleza dinámica del proyecto de vida es esencial para adaptarnos a nuevas circunstancias, experiencias y descubrimientos a lo largo de nuestro viaje personal. En este sentido, **el proyecto de vida no es estático, sino que evoluciona junto con nuestras aspiraciones, valores y crecimiento personal**, reflejando así la naturaleza cambiante y en constante desarrollo de nuestras vidas.
-
+Es importante destacar que **el proyecto de vida no sigue necesariamente una trayectoria lineal** y definitiva, sino que **puede estar sujeto a cambios y ajustes a lo largo del tiempo**, al igual que nosotros como individuos. Reconocer esta naturaleza dinámica del proyecto de vida es esencial para adaptarnos a nuevas circunstancias, experiencias y descubrimientos a lo largo de nuestro viaje personal. En este sentido, **el proyecto de vida no es estático, sino que evoluciona junto con nuestras aspiraciones, valores y crecimiento personal**.
 
 # Actividades
 
@@ -73,7 +72,7 @@ Durante la sesión, se llevaron a cabo cuatro actividades diseñadas para foment
 
 ## Actividad 1: Desarrollo de una Matriz FODA de la personalidad.
 
-Objetivo: Analizar las fortalezas, debilidades, oportunidades y amenazas de la personalidad de cada individuo, brindando una visión integral de sí mismo como punto de partida para el desarrollo personal.
+Objetivo: Analizar las fortalezas, debilidades, oportunidades y amenazas de la personalidad de cada uno, brindando una visión integral de sí mismo como punto de partida para este desarrollo personal.
 
 Para desarrollar una matriz FODA de la personalidad, primero es importante identificar las características y aspectos relevantes de la propia personalidad. Esto puede incluir rasgos de carácter, habilidades, valores, experiencias pasadas, comportamientos, creencias y cualquier otro aspecto que sea significativo para la comprensión de uno mismo.
 
@@ -92,7 +91,7 @@ Objetivo: Identificar y priorizar los roles principales que desempeña cada pers
 Consejos para esta actividad:
 
 - Se recomienda dedicar tiempo suficiente para reflexionar sobre los roles que desempeña la persona y establecer metas realistas y significativas para cada uno de ellos.
-- Es importante priorizar los roles de acuerdo con su importancia y relevancia en la vida de la persona, para asegurar que los esfuerzos se centren en lo más importante.
+- Es importante priorizar los roles de acuerdo con su importancia y relevancia en la vida de cada persona, para asegurar que los esfuerzos se centren en lo más importante.
 - Al establecer metas para cada rol, es útil asegurarse de que estén alineadas con los valores y objetivos de vida más amplios de la persona.
 - Se recomienda revisar periódicamente los roles, metas y acciones para asegurarse de que sigan siendo relevantes y alineados con los objetivos de vida de la persona.
 
@@ -117,10 +116,13 @@ Para esta actividad, se busca que uno se visualice en los siguientes escenarios:
 - ¿Cuál es tu maryor sueño?
 
 
-Estas actividades proporcionan herramientas prácticas y reflexiones profundas para guiar a los participantes en el proceso de definición de su proyecto de vida y autoconocimiento, facilitando así un camino más claro hacia el crecimiento personal y profesional.
-
-
 ` _________________________________________________________________`
+
+# Reflexión 
+
+El autoconocimiento es la brújula que guía nuestros pasos en la travesía de la vida. Es el profundo entendimiento de quiénes somos, nuestras fortalezas y debilidades, nuestros deseos y temores. A través de la introspección, exploramos los rincones de nuestra mente y corazón, descubriendo capas ocultas de nuestra identidad. Sin embargo, el autoconocimiento es solo el primer paso; la visualización y la manifestación se convierten en los hilos con los que tejemos el tapiz de nuestro destino. Al imaginar claramente nuestras metas y sueños, damos forma a nuestra realidad, convirtiendo nuestros pensamientos en acciones tangibles. La motivación actúa como el combustible que impulsa nuestro viaje hacia esas metas, alimentando nuestra determinación incluso en los momentos de desafío. 
+
+> Cuando cultivamos una profunda comprensión de nosotros mismos, combinada con una visión clara de nuestro futuro y una ardiente motivación, nos convertimos en arquitectos de nuestro propio destino, capaces de transformar nuestros sueños en realidad.
 
 # Motivación
 
