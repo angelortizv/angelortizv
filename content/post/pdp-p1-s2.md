@@ -116,8 +116,6 @@ Para esta actividad, se busca que uno se visualice en los siguientes escenarios:
 - ¿Cuál es tu maryor sueño?
 
 
-` _________________________________________________________________`
-
 # Reflexión 
 
 El autoconocimiento es la brújula que guía nuestros pasos en la travesía de la vida. Es el profundo entendimiento de quiénes somos, nuestras fortalezas y debilidades, nuestros deseos y temores. A través de la introspección, exploramos los rincones de nuestra mente y corazón, descubriendo capas ocultas de nuestra identidad. Sin embargo, el autoconocimiento es solo el primer paso; la visualización y la manifestación se convierten en los hilos con los que tejemos el tapiz de nuestro destino. Al imaginar claramente nuestras metas y sueños, damos forma a nuestra realidad, convirtiendo nuestros pensamientos en acciones tangibles. La motivación actúa como el combustible que impulsa nuestro viaje hacia esas metas, alimentando nuestra determinación incluso en los momentos de desafío. 
