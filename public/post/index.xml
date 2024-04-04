@@ -6,14 +6,21 @@
     <description>Recent content in Posts on angelortizv </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 25 Mar 2024 11:55:15 -0600</lastBuildDate>
+    <lastBuildDate>Thu, 04 Apr 2024 13:43:19 -0600</lastBuildDate>
     <atom:link href="//localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>PDP Parte I - Sesión 02</title>
-      <link>//localhost:1313/blog/pdp-parte-i-sesi%C3%B3n-02/</link>
+      <title>Limitaciones y Sesgos Potenciales de los Focus Groups en UX</title>
+      <link>//localhost:1313/blog/limitaciones-y-sesgos-potenciales-de-los-focus-groups-en-ux/</link>
+      <pubDate>Thu, 04 Apr 2024 13:43:19 -0600</pubDate>
+      <guid>//localhost:1313/blog/limitaciones-y-sesgos-potenciales-de-los-focus-groups-en-ux/</guid>
+      <description>Los focus groups han sido una herramienta omnipresente en el arsenal de investigación de experiencia de usuario durante décadas. Sin embargo, su lugar en el proceso de diseño ha sido objeto de debate y controversia entre los profesionales del UX. ¿Son realmente una herramienta valiosa para comprender las necesidades y expectativas de los usuarios, o son propensos a sesgos y limitaciones que socavan su utilidad? Vamos a desentrañar la controversia que rodea a los focus groups en el campo de UX.</description>
+    </item>
+    <item>
+      <title>PDP Sesión 02 - Parte I : Citas conmigo y proyecto de vida</title>
+      <link>//localhost:1313/blog/pdp-sesi%C3%B3n-02-parte-i-citas-conmigo-y-proyecto-de-vida/</link>
       <pubDate>Mon, 25 Mar 2024 11:55:15 -0600</pubDate>
-      <guid>//localhost:1313/blog/pdp-parte-i-sesi%C3%B3n-02/</guid>
-      <description>En la la Sesión 2 - Parte 1 del Programa de Desarrollo Profesional (PDP), el enfoque principal fue el inicio del viaje individual para definir tanto el propósito de vida como el profesional. Se destacó la importancia de realizar todas las acciones con un propósito claro, ya que esto proporciona una guía fundamental para el camino por delante. Se subrayó la importancia de responder preguntas como &amp;ldquo;¿Por qué estoy aquí?&amp;rdquo; y &amp;ldquo;¿Con quién estoy?</description>
+      <guid>//localhost:1313/blog/pdp-sesi%C3%B3n-02-parte-i-citas-conmigo-y-proyecto-de-vida/</guid>
+      <description>En la la Sesión 2 - Parte 1 del Programa de Desarrollo Profesional PDP, el enfoque principal fue el inicio del viaje individual para definir tanto el propósito de vida como el profesional.&#xA;Uno de los puntos iniciales destacados fue la importancia de llevar a cabo todas las acciones con un propósito claro, ya que esto proporciona una guía fundamental para el camino futuro. En relación a esto, se subrayó la importancia de siempre responder preguntas como &amp;ldquo;¿Por qué estoy aquí?</description>
     </item>
     <item>
       <title>Conventional Commits</title>
