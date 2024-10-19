@@ -82,3 +82,5 @@ La mayoría de las organizaciones buscan cumplir con el nivel **AA** para ofrece
 ## Conclusión
 
 La accesibilidad web no solo es una cuestión de cumplir con normas, sino también de crear una experiencia inclusiva para todos los usuarios. Al seguir las pautas WCAG y aplicar principios clave de diseño, podemos hacer que el mundo digital sea accesible para todos, independientemente de sus capacidades o circunstancias. Es una responsabilidad que debemos asumir para construir un internet más inclusivo y justo.
+
+{{< subscribe email="angelo2898@gmail.com" >}}

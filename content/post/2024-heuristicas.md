@@ -116,3 +116,5 @@ Ben Shneiderman, otro experto en usabilidad, formuló **8 reglas de oro** que se
 La evaluación heurística es una herramienta valiosa en el diseño de interfaces, proporcionando una manera económica y rápida de detectar problemas de usabilidad en las primeras etapas del desarrollo. Aunque tiene limitaciones, como la falta de perspectiva del usuario, su efectividad radica en la capacidad de los expertos para aplicar principios bien definidos. Las **heurísticas de Nielsen** y las **reglas de oro de Shneiderman** son guías esenciales para los evaluadores, ayudando a mejorar la experiencia de usuario y a crear productos digitales más accesibles y fáciles de usar.
 
 Para obtener una evaluación más completa de la usabilidad de un producto, es recomendable combinar la evaluación heurística con pruebas de usuario en las etapas finales del desarrollo.
+
+{{< subscribe email="angelo2898@gmail.com" >}}
