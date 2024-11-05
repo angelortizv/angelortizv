@@ -1,15 +1,20 @@
 ---
 title: Angelo Ortiz Vega
 bio: |
-  Persona común con ideas extraordinarias. 
+  Angelo Ortiz Vega: Estudiante de Ingeniería en Computadores, Profesor de UX Design, entusiasta de la tecnología y la IA, escritor curioso. 
 bio2nd: |
-  En la actualidad, me encuentro en la etapa final de mis estudios en Ingeniería en Computadores en el Tecnológico de Costa Rica. Además, desempeño el rol de programador de software independiente en diversos proyectos, al mismo tiempo que soy profesor de Diseño de Experiencia de Usuario (UX) en la Universidad Creativa.
+  Actualmente estoy estudiando la carrera de Ingeniería en Computadores en el Instituto Tecnológico de Costa Rica. Ingeniería en Computadores se basa en las ciencias y tecnologías que permiten el diseño, construcción, implementación y mantenimiento de componentes de sistemas informáticos tanto en hardware como en software. También trabajo como profesor de Diseño UX e Inteligencia Artificial en la Universidad Creativa.
 bio3er: | 
-  Al mantenerme constantemente en movimiento, tengo la oportunidad de cruzarme con individuos excepcionales y absorber conocimientos de su experiencia. Cada vez que se presenta la ocasión, aparto unos minutos de mi ocupación para modestamente compartir mis reflexiones, emociones y aprendizajes acerca de la vida. ¡Siempre agradecido por tu lectura!
+  Cuando no estoy frente a la computadora, suelo caminar, leer, salir con mis amigos o hacer playtlists en Spotify. Tengo este espacio en esta web para compartir algunas de las cosas que estoy haciendo, pensando o investigando.
 bio4th: |
-  Correo Electrónico: angelo@angelortizv.com 
-bio5th: |
-  Portafolio: https://www.angelortizv.me 
-avatar: /uploads/angelortizv_profile.jpg
+  Si tienes alguna pregunta o simplemente quieres saludar, ¡haré todo lo posible para responderte! Correo Electrónico: angelo@angelortizv.com 
+avatar: /uploads/angelortizv.jpeg
 featured: true
+social:
+  - title: github
+    url: https://github.com/angelortizv
+  - title: instagram
+    url: https://instagram.com/angelortizv
+  - title: linkedin
+    url: https://linkedin.com/angelortizv
 ---
