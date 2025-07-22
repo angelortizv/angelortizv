@@ -3,16 +3,19 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>//localhost:1313/</loc>
-    <lastmod>2025-07-21T21:31:01-06:00</lastmod>
+    <lastmod>2025-07-21T21:44:34-06:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/post/</loc>
-    <lastmod>2025-07-21T21:31:01-06:00</lastmod>
+    <loc>//localhost:1313/blog/2025-rlhf101/</loc>
+    <lastmod>2025-07-21T21:44:34-06:00</lastmod>
   </url><url>
     <loc>//localhost:1313/authors/angelo-ortiz-vega/</loc>
-    <lastmod>2024-11-25T23:59:08-06:00</lastmod>
+    <lastmod>2025-07-21T21:44:34-06:00</lastmod>
   </url><url>
     <loc>//localhost:1313/authors/</loc>
-    <lastmod>2024-11-25T23:59:08-06:00</lastmod>
+    <lastmod>2025-07-21T21:44:34-06:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/post/</loc>
+    <lastmod>2025-07-21T21:44:34-06:00</lastmod>
   </url><url>
     <loc>//localhost:1313/blog/pdp-2024/</loc>
     <lastmod>2024-11-25T23:59:08-06:00</lastmod>

@@ -6,8 +6,15 @@
     <description>Recent content on angelortizv </description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 25 Nov 2024 23:59:08 -0600</lastBuildDate>
+    <lastBuildDate>Mon, 21 Jul 2025 21:44:34 -0600</lastBuildDate>
     <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RLHF 101: ¿Qué es y por qué importa el Aprendizaje por Refuerzo con Retroalimentación Humana?</title>
+      <link>//localhost:1313/blog/rlhf-101-qu%C3%A9-es-y-por-qu%C3%A9-importa-el-aprendizaje-por-refuerzo-con-retroalimentaci%C3%B3n-humana/</link>
+      <pubDate>Mon, 21 Jul 2025 21:44:34 -0600</pubDate>
+      <guid>//localhost:1313/blog/rlhf-101-qu%C3%A9-es-y-por-qu%C3%A9-importa-el-aprendizaje-por-refuerzo-con-retroalimentaci%C3%B3n-humana/</guid>
+      <description>&lt;p&gt;En los últimos años, los modelos de inteligencia artificial han dado saltos extraordinarios. Pero detrás de su comportamiento cada vez más natural, coherente y útil, hay un ingrediente poco conocido pero fundamental: el Aprendizaje por Refuerzo con Retroalimentación Humana, conocido como &lt;strong&gt;RLHF&lt;/strong&gt; (por sus siglas en inglés: Reinforcement Learning with Human Feedback).&lt;/p&gt;&#xA;&lt;p&gt;En este blog exploramos qué es RLHF, por qué importa tanto, y cómo está cambiando la forma en que entrenamos sistemas de IA como ChatGPT, Claude o Gemini.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>PDP 2024</title>
       <link>//localhost:1313/blog/pdp-2024/</link>
