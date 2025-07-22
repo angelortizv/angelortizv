@@ -7,10 +7,20 @@ enableRobotsTXT = true
 canonifyURLs = true
 enableEmoji = true
 
-[social] 
-    github = "https://github.com/angelortizv"
-    instagram = "https://instagram.com/angelortizv"
-    linkedin = "http://linkedin.com/in/angelortizv/"
+
+[params]
+  [[params.social]]
+    name = "github"
+    url = "https://github.com/angelortizv"
+
+  [[params.social]]
+    name = "instagram"
+    url = "https://instagram.com/angelortizv"
+
+  [[params.social]]
+    name = "linkedin"
+    url = "http://linkedin.com/in/angelortizv/"
+
 
 [menu]
     [[menu.main]]

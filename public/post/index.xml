@@ -4,100 +4,128 @@
     <title>Posts on angelortizv </title>
     <link>//localhost:1313/post/</link>
     <description>Recent content in Posts on angelortizv </description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Thu, 04 Apr 2024 13:43:19 -0600</lastBuildDate>
+    <lastBuildDate>Mon, 25 Nov 2024 23:59:08 -0600</lastBuildDate>
     <atom:link href="//localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PDP 2024</title>
+      <link>//localhost:1313/blog/pdp-2024/</link>
+      <pubDate>Mon, 25 Nov 2024 23:59:08 -0600</pubDate>
+      <guid>//localhost:1313/blog/pdp-2024/</guid>
+      <description>&lt;h1 id=&#34;el-pdp-y-mi-aprendizaje-en-el-programa&#34;&gt;El PDP y mi Aprendizaje en el Programa&lt;/h1&gt;&#xA;&lt;p&gt;El Programa de Desarrollo Profesional es una iniciativa educativa diseñada por el &lt;a href=&#34;https://cumiravalles.org/&#34;&gt;Centro Universitario Miravalles&lt;/a&gt; para estudiantes de las cinco universidades públicas de Costa Rica (TEC, UCR, UNA, UTN, UNED) con sólidas trayectorias académicas, cuyo propósito es &lt;strong&gt;fomentar el crecimiento personal y el desarrollo de habilidades de liderazgo&lt;/strong&gt;. Desde su creación en 2003 y bajo la guía del Licenciado Jorge Silva, este programa se ha enfocado en dotar a los participantes de herramientas esenciales para la vida y el ámbito profesional.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Git and GitHub: A Developer&#39;s Guide</title>
+      <link>//localhost:1313/blog/git-and-github-a-developers-guide/</link>
+      <pubDate>Fri, 18 Oct 2024 23:44:57 -0600</pubDate>
+      <guid>//localhost:1313/blog/git-and-github-a-developers-guide/</guid>
+      <description>&lt;p&gt;Version control is essential in modern software development, enabling teams to collaborate efficiently, track changes, and manage projects. Two tools that have become synonymous with version control are &lt;strong&gt;Git&lt;/strong&gt; and &lt;strong&gt;GitHub&lt;/strong&gt;. In this blog, we&amp;rsquo;ll dive into what Git and GitHub are, explore their differences, and provide a green sheet with essential Git commands to help you get started.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-is-git&#34;&gt;What is Git?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Git&lt;/strong&gt; is a distributed version control system (DVCS) designed to track changes in the source code during software development. Created by &lt;strong&gt;Linus Torvalds&lt;/strong&gt; in 2005, Git allows multiple developers to collaborate on projects, make changes, and merge them without overwriting each other&amp;rsquo;s work. Git operates on your local machine, giving you full control over your version history.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Accesibilidad Web: Un Camino hacia la Inclusión Digital</title>
+      <link>//localhost:1313/blog/accesibilidad-web-un-camino-hacia-la-inclusi%C3%B3n-digital/</link>
+      <pubDate>Fri, 18 Oct 2024 23:24:29 -0600</pubDate>
+      <guid>//localhost:1313/blog/accesibilidad-web-un-camino-hacia-la-inclusi%C3%B3n-digital/</guid>
+      <description>&lt;p&gt;La accesibilidad web es un principio clave en el diseño y desarrollo de sitios web y aplicaciones en línea. Su objetivo es asegurar que las plataformas digitales sean utilizables por el mayor número de personas posible, sin importar sus habilidades, conocimientos técnicos o los dispositivos que utilicen para acceder a ellas. En este blog, exploraremos los aspectos más importantes de la accesibilidad web, incluyendo las directrices WCAG, niveles de accesibilidad y principios clave para diseñar interfaces accesibles.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Usabilidad y Heuristicas</title>
+      <link>//localhost:1313/blog/usabilidad-y-heuristicas/</link>
+      <pubDate>Fri, 18 Oct 2024 18:38:20 -0600</pubDate>
+      <guid>//localhost:1313/blog/usabilidad-y-heuristicas/</guid>
+      <description>&lt;h1 id=&#34;usabilidad-en-el-diseño-de-interfaces&#34;&gt;Usabilidad en el Diseño de Interfaces&lt;/h1&gt;&#xA;&lt;p&gt;La &lt;strong&gt;usabilidad&lt;/strong&gt; se refiere específicamente a la medida en que un producto digital (como un sitio web, una aplicación móvil o un software) es fácil de usar y proporciona una experiencia satisfactoria para sus usuarios. Es uno de los principales pilares de la experiencia de usuario (UX), y su objetivo es garantizar que los usuarios puedan interactuar con el producto de manera efectiva, eficiente y sin dificultades. Una buena usabilidad facilita que los usuarios logren sus objetivos rápidamente, sin errores ni frustraciones, mientras que una mala usabilidad puede llevar a una experiencia confusa y frustrante, lo que podría resultar en el abandono del producto.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Limitaciones y Sesgos Potenciales de los Focus Groups en UX</title>
       <link>//localhost:1313/blog/limitaciones-y-sesgos-potenciales-de-los-focus-groups-en-ux/</link>
       <pubDate>Thu, 04 Apr 2024 13:43:19 -0600</pubDate>
       <guid>//localhost:1313/blog/limitaciones-y-sesgos-potenciales-de-los-focus-groups-en-ux/</guid>
-      <description>Los focus groups han sido una herramienta omnipresente en el arsenal de investigación de experiencia de usuario durante décadas. Sin embargo, su lugar en el proceso de diseño ha sido objeto de debate y controversia entre los profesionales del UX. ¿Son realmente una herramienta valiosa para comprender las necesidades y expectativas de los usuarios, o son propensos a sesgos y limitaciones que socavan su utilidad? Vamos a desentrañar la controversia que rodea a los focus groups en el campo de UX.</description>
+      <description>&lt;p&gt;Los focus groups han sido una herramienta omnipresente en el arsenal de investigación de experiencia de usuario durante décadas. Sin embargo, su lugar en el proceso de diseño ha sido objeto de debate y controversia entre los profesionales del UX. ¿Son realmente una herramienta valiosa para comprender las necesidades y expectativas de los usuarios, o son propensos a sesgos y limitaciones que socavan su utilidad? Vamos a desentrañar la controversia que rodea a los focus groups en el campo de UX.&lt;/p&gt;</description>
     </item>
     <item>
       <title>PDP Sesión 02 - Parte I : Citas conmigo y proyecto de vida</title>
       <link>//localhost:1313/blog/pdp-sesi%C3%B3n-02-parte-i-citas-conmigo-y-proyecto-de-vida/</link>
       <pubDate>Mon, 25 Mar 2024 11:55:15 -0600</pubDate>
       <guid>//localhost:1313/blog/pdp-sesi%C3%B3n-02-parte-i-citas-conmigo-y-proyecto-de-vida/</guid>
-      <description>En la la Sesión 2 - Parte 1 del Programa de Desarrollo Profesional PDP, el enfoque principal fue el inicio del viaje individual para definir tanto el propósito de vida como el profesional.&#xA;Uno de los puntos iniciales destacados fue la importancia de llevar a cabo todas las acciones con un propósito claro, ya que esto proporciona una guía fundamental para el camino futuro. En relación a esto, se subrayó la importancia de siempre responder preguntas como &amp;ldquo;¿Por qué estoy aquí?</description>
+      <description>&lt;p&gt;En la la Sesión 2 - Parte 1 del Programa de Desarrollo Profesional &lt;a href=&#34;https://cumiravalles.org/programas-academicos-y-sociales/&#34;&gt;PDP&lt;/a&gt;, el enfoque principal fue el inicio del viaje individual para definir tanto el propósito de vida como el profesional.&lt;/p&gt;&#xA;&lt;p&gt;Uno de los puntos iniciales destacados fue la importancia de llevar a cabo todas las acciones con un propósito claro, ya que esto proporciona una guía fundamental para el camino futuro. En relación a esto, se subrayó la importancia de siempre responder preguntas como &amp;ldquo;¿Por qué estoy aquí?&amp;rdquo; y &amp;ldquo;¿Con quién estoy?&amp;rdquo; como parte de este proceso de autoevaluación y reflexión.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Conventional Commits</title>
       <link>//localhost:1313/blog/conventional-commits/</link>
       <pubDate>Wed, 11 Oct 2023 17:56:52 -0600</pubDate>
       <guid>//localhost:1313/blog/conventional-commits/</guid>
-      <description>Introducción Los &amp;ldquo;Conventional Commits&amp;rdquo; son un enfoque de escritura de mensajes de commits que sigue un formato específico y establecido para describir los cambios realizados en un commit. Este enfoque se utiliza comúnmente en proyectos de código abierto y es una forma de estandarizar y hacer más comprensibles las descripciones de los commits en un repositorio de control de versiones, como Git.&#xA;El formato de un commit convencional generalmente consta de tres partes principales:</description>
+      <description>&lt;h2 id=&#34;introducción&#34;&gt;Introducción&lt;/h2&gt;&#xA;&lt;p&gt;Los &amp;ldquo;Conventional Commits&amp;rdquo; son un enfoque de escritura de mensajes de commits que sigue un formato específico y establecido para describir los cambios realizados en un commit. Este enfoque se utiliza comúnmente en proyectos de código abierto y es una forma de estandarizar y hacer más comprensibles las descripciones de los commits en un repositorio de control de versiones, como Git.&lt;/p&gt;&#xA;&lt;p&gt;El formato de un commit convencional generalmente consta de tres partes principales:&lt;/p&gt;</description>
     </item>
     <item>
       <title>UX Design Glossary</title>
       <link>//localhost:1313/blog/ux-design-glossary/</link>
       <pubDate>Tue, 06 Jun 2023 02:14:05 -0600</pubDate>
       <guid>//localhost:1313/blog/ux-design-glossary/</guid>
-      <description>En el campo de Experiencia de Usuario existe una amplia variedad de términos, conceptos y jerga fascinante que a veces resulta confusa. He recopilado una lista de los términos más relevantes en UX, organizados alfabéticamente de la A a la Z.&#xA;A A/B testing La prueba A/B es un método utilizado para probar dos versiones diferentes de un diseño para ver qué variación funciona mejor. Cuando se ejecutan pruebas A/B, solo desea variar un elemento o aspecto del diseño; esto le permite señalar exactamente qué característica influyó en el resultado.</description>
+      <description>&lt;p&gt;En el campo de Experiencia de Usuario existe una amplia variedad de términos, conceptos y jerga fascinante que a veces resulta confusa. He recopilado una lista de los términos más relevantes en UX, organizados alfabéticamente de la A a la Z.&lt;/p&gt;&#xA;&lt;h1 id=&#34;a&#34;&gt;A&lt;/h1&gt;&#xA;&lt;h3 id=&#34;ab-testing&#34;&gt;A/B testing&lt;/h3&gt;&#xA;&lt;p&gt;La prueba A/B es un método utilizado para probar dos versiones diferentes de un diseño para ver qué variación funciona mejor. Cuando se ejecutan pruebas A/B, solo desea variar un elemento o aspecto del diseño; esto le permite señalar exactamente qué característica influyó en el resultado.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Cambiar De Sueños</title>
       <link>//localhost:1313/blog/cambiar-de-sue%C3%B1os/</link>
       <pubDate>Wed, 29 Jun 2022 19:02:29 -0600</pubDate>
       <guid>//localhost:1313/blog/cambiar-de-sue%C3%B1os/</guid>
-      <description>Empezar a realizar las cosas tarde está bien, debemos de dejar de autosabotearnos pensando que la vida nos pasa factura y que estamos tarde para empezar una nueva aventura. Es más, empezar tarde hace que en cierto modo estemos más vacunados sobre la vida, que todo por lo que hemos pasado hasta el momento nos haya generado un callo para afrontar lo que está por venir.&#xA;Muchas veces siento que ser adulto es verte a ti mismo como roto, ver al mundo como roto pero nunca darte por vencido.</description>
+      <description>&lt;p&gt;Empezar a realizar las cosas tarde está bien, debemos de dejar de autosabotearnos pensando que la vida nos pasa factura y que estamos tarde para empezar una nueva aventura. Es más, empezar tarde hace que en cierto modo estemos más vacunados sobre la vida, que todo por lo que hemos pasado hasta el momento nos haya generado un callo para afrontar lo que está por venir.&lt;/p&gt;&#xA;&lt;p&gt;Muchas veces siento que ser adulto es verte a ti mismo como roto, ver al mundo como roto pero nunca darte por vencido. Me choca ver cuando las personas viven su vida en piloto automático, no se emocionan por las pequeñeces y sólo viven para morir, no quieren empezar de cero ni cambiar sus sueños por miedo. Me enamoro de personas que se emocionan a cualquier edad, con las cosas pequeñas y las grandes, con la vida y la muerte, desde el nacer de una mariposa hasta el morir de un ocaso.&lt;/p&gt;</description>
     </item>
     <item>
       <title>El Problema De Las Balas Infinitas</title>
       <link>//localhost:1313/blog/el-problema-de-las-balas-infinitas/</link>
       <pubDate>Mon, 23 Aug 2021 11:48:02 -0600</pubDate>
       <guid>//localhost:1313/blog/el-problema-de-las-balas-infinitas/</guid>
-      <description>Nos acostumbramos a tener balas infinitas (para todo en la vida) que cuando tenemos recursos limitados; lo que hacemos es ver simplemente una limitación y no somos capaces de abrir los ojos a un mundo de posibilidades que existen con el fin de tomar estas limitaciones como una ventaja.&#xA;Antes que nada, me refiero a balas infinitas como la capacidad de realizar una acción una y otra vez sin tener repercusiones.</description>
+      <description>&lt;p&gt;Nos acostumbramos a tener balas infinitas (para todo en la vida) que cuando tenemos recursos limitados; lo que hacemos es ver simplemente una limitación y no somos capaces de abrir los ojos a  un mundo de posibilidades que existen con el fin de tomar estas limitaciones como una ventaja.&lt;/p&gt;&#xA;&lt;p&gt;Antes que nada, me refiero a balas infinitas como la capacidad de realizar una acción una y otra vez sin tener repercusiones. El problema de estas balas infinitas yace en que con el uso de la tecnología no le dediquemos tanto esfuerzo y planeación a nuestro trabajo, por que de alguna forma sabemos que volverlo a hacer no nos costará nada.&lt;/p&gt;</description>
     </item>
     <item>
       <title>El Arte De Ser Constante</title>
       <link>//localhost:1313/blog/el-arte-de-ser-constante/</link>
       <pubDate>Sun, 10 Jan 2021 13:03:39 -0600</pubDate>
       <guid>//localhost:1313/blog/el-arte-de-ser-constante/</guid>
-      <description>Este año que pasó escribí como meta que debía leer al menos un libro por mes. Me costó iniciar; durante los primeros dos meses y medio leí solamente un libro con muchos costos para finalizar, no tenía ningún ritmo de lectura. Llegó la pandemia y no tenía excusas de que no tenía tiempo para leer, pero sabía que tenía que organizarme.&#xA;En esta práctica descubrí la importancia de tener una rutina.</description>
+      <description>&lt;p&gt;Este año que pasó escribí como meta que debía leer al menos un libro por mes. Me costó iniciar; durante los primeros dos meses y medio leí solamente un libro con muchos costos para finalizar, no tenía ningún ritmo de lectura. Llegó la pandemia y no tenía excusas de que no tenía tiempo para leer, pero sabía que tenía que organizarme.&lt;/p&gt;&#xA;&lt;p&gt;En esta práctica descubrí la importancia de tener una rutina. Las rutinas son tareas que se ejecutan en un momento del día para generar la creación de un hábito que, con el tiempo, cumpla un objetivo mayor a largo plazo.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Frases Que Inspiran</title>
       <link>//localhost:1313/blog/frases-que-inspiran/</link>
       <pubDate>Sun, 03 Jan 2021 20:21:48 -0600</pubDate>
       <guid>//localhost:1313/blog/frases-que-inspiran/</guid>
-      <description>Defendemos lo que creemos, lo que pensamos y lo que alguna vez oímos. A continuación presento un listado de frases que he reccopilado en el caminar, espero siga creciendo.&#xA;Con autoría:&#xA;La mayor aventura que puedes emprender es vivir la vida de tus sueños. -Oprah Winfrey&#xA;Si te das 30 días para limpiar tu casa, te llevará 30 días. Pero si te das 3 horas, te llevará 3 horas. Lo mismo aplica para tus metas, ambiciones y planes.</description>
+      <description>&lt;p&gt;Defendemos lo que creemos, lo que pensamos y lo que alguna vez oímos. A continuación presento un listado de frases que he reccopilado en el caminar, espero siga creciendo.&lt;/p&gt;&#xA;&lt;p&gt;Con autoría:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;La mayor aventura que puedes emprender es vivir la vida de tus sueños. -Oprah Winfrey&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Si te das 30 días para limpiar tu casa, te llevará 30 días. Pero si te das 3 horas, te llevará 3 horas. Lo mismo aplica para tus metas, ambiciones y planes. -Elon Musk&lt;/p&gt;</description>
     </item>
     <item>
       <title>Filtro de la Realidad</title>
       <link>//localhost:1313/blog/filtro-de-la-realidad/</link>
       <pubDate>Sun, 23 Aug 2020 10:27:13 -0600</pubDate>
       <guid>//localhost:1313/blog/filtro-de-la-realidad/</guid>
-      <description>En esta cuarentena, varios de mis amigos y conocidos me avisaron que dejarían Instagram y Facebook principalmente. Sus razones para hacerlo: que las redes sociales drenan su energía, que les quita mucho tiempo, que todo es una farsa, etc, etc, etc&amp;hellip;&#xA;Me pregunto, ¿están cambiando las redes sociales?, ¿Las personas nos estamos aburriendo de consumir siempre lo mismo?. En este escrito trataré de responder primero: ¿Qué hace a las redes tan atractivas para que las usemos?</description>
+      <description>&lt;p&gt;En esta cuarentena, varios de mis amigos y conocidos me avisaron que dejarían Instagram y Facebook principalmente. Sus razones para hacerlo: que las redes sociales drenan su energía, que les quita mucho tiempo, que todo es una farsa, etc, etc, etc&amp;hellip;&lt;/p&gt;&#xA;&lt;p&gt;Me pregunto, ¿están cambiando las redes sociales?, ¿Las personas nos estamos aburriendo de consumir siempre lo mismo?. En este escrito trataré de responder primero: ¿Qué hace a las redes tan atractivas para que las usemos?, segundo:  ¿Toda la información que nos rodea en redes sociales es basura?&lt;/p&gt;</description>
     </item>
     <item>
       <title>El Cambio</title>
       <link>//localhost:1313/blog/el-cambio/</link>
       <pubDate>Sun, 09 Aug 2020 11:22:37 -0600</pubDate>
       <guid>//localhost:1313/blog/el-cambio/</guid>
-      <description>Todas las personas experimentamos cambios en nuestras vida. Algunas los experimentan todos los días, a otras les gustaría cambiar pero no logran abandonar viejas costumbres.&#xA;¿Qué hay en ese mito de la transformación que interesa a tanta gente? ¿Por qué para algunos es una liberación, y a otros, por el contrario, se les ponen los pelos de punta con solo oír la palabra? ¿Por qué nos dan miedo los cambios?</description>
+      <description>&lt;p&gt;Todas las personas experimentamos cambios en nuestras vida. Algunas los experimentan todos los días, a otras les gustaría cambiar pero no logran abandonar viejas costumbres.&lt;/p&gt;&#xA;&lt;p&gt;¿Qué hay en ese mito de la transformación que interesa a tanta gente? ¿Por qué para algunos es una liberación, y a otros, por el contrario, se les ponen los pelos de punta con solo oír la palabra? ¿Por qué nos dan miedo los cambios?&lt;/p&gt;</description>
     </item>
     <item>
       <title>Sistema de Valores</title>
       <link>//localhost:1313/blog/sistema-de-valores/</link>
       <pubDate>Sat, 01 Aug 2020 21:39:32 -0600</pubDate>
       <guid>//localhost:1313/blog/sistema-de-valores/</guid>
-      <description>Nuestro sistema de valores está descompuesto.&#xA;Decimos que usted es valioso si es hermoso o tiene una figura escultural, decimos que usted es valioso si puede producir, decimos que usted es valioso si puede hacer una buena jugada en fútbol o producir música pegajosa. Usted es valioso si su nombre comienza con un &amp;laquo;Dr.&amp;raquo; o tiene un &amp;laquo;Ph.D&amp;raquo; al final. Usted es valioso si gana un nutrido salario mensual y posee un espejo que simula el éxito financiero.</description>
+      <description>&lt;p&gt;Nuestro sistema de valores está descompuesto.&lt;/p&gt;&#xA;&lt;p&gt;Decimos que usted es valioso si es hermoso o tiene una figura escultural, decimos que usted es valioso si puede producir, decimos que usted es valioso si puede hacer una buena jugada en fútbol o producir música pegajosa. Usted es valioso si su nombre comienza con un &amp;laquo;Dr.&amp;raquo; o tiene un &amp;laquo;Ph.D&amp;raquo; al final. Usted es valioso si gana un nutrido salario mensual y posee un espejo que simula el éxito financiero.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Fe vs Razón</title>
       <link>//localhost:1313/blog/fe-vs-raz%C3%B3n/</link>
       <pubDate>Sun, 14 Jun 2020 01:37:53 -0600</pubDate>
       <guid>//localhost:1313/blog/fe-vs-raz%C3%B3n/</guid>
-      <description>Las dos fuentes más grandes de conocimiento que el hombre ha logrado concebir son el medio racional, por virtud del cual se obtiene un producto concreto y aceptable para el raciocinio humano, y la fe, que otorga conceptos abstractos, que para poder conceptualizarlos se necesita realizar una ficción interna propia de cada persona.&#xA;La fe en la Biblia se expresa como la afirmación de que Dios (objeto de nuestra fe), hará lo que esperamos, a su manera y a su tiempo.</description>
+      <description>&lt;p&gt;Las dos fuentes más grandes de conocimiento que el hombre ha logrado concebir son el medio racional, por virtud del cual se obtiene un producto concreto y aceptable para el raciocinio humano, y la fe, que otorga conceptos abstractos, que para poder conceptualizarlos se necesita realizar una ficción interna propia de cada persona.&lt;/p&gt;&#xA;&lt;p&gt;La &lt;a href=&#34;https://www.subiblia.com/que-es-la-fe/&#34;&gt;fe en la Biblia&lt;/a&gt; se expresa como la afirmación de que Dios (objeto de nuestra fe), hará lo que esperamos, a su manera y a su tiempo. La &lt;a href=&#34;https://dle.rae.es/raz%C3%B3n&#34;&gt;razón&lt;/a&gt; por otra parte, es el acto de discurrir el entendimiento.&lt;/p&gt;</description>
     </item>
     <item>
       <title>¡Bienvenidos!</title>
       <link>//localhost:1313/blog/bienvenidos/</link>
       <pubDate>Sat, 06 Jun 2020 02:45:19 -0600</pubDate>
       <guid>//localhost:1313/blog/bienvenidos/</guid>
-      <description>Bienvenidos, en este primer post intentaré descifrar el objetivo de este blog.&#xA;Acerca de mí: Soy Angelo Ortiz Vega, costarricense, estudiante de Ingeniería en Computadores, músico amateur, desarrollador de tecnología. Entre otras cosas, joven promedio con sueños extraordinarios.&#xA;Nací en Costa Rica (Cartago) de cédula 3, el 28 de agosto de 1998, tuve la bendición de nacer en una familia fuerte con dos hermanos y mis dos padres, quienes siempre me han apoyado y brindado su amor.</description>
+      <description>&lt;p&gt;Bienvenidos, en este primer post intentaré descifrar el objetivo de este blog.&lt;/p&gt;&#xA;&lt;h4 id=&#34;acerca-de-mí&#34;&gt;Acerca de mí:&lt;/h4&gt;&#xA;&lt;p&gt;Soy Angelo Ortiz Vega, costarricense, estudiante de Ingeniería en Computadores, músico amateur, desarrollador de tecnología. Entre otras cosas, joven promedio con sueños extraordinarios.&lt;/p&gt;&#xA;&lt;p&gt;Nací en Costa Rica (Cartago) de cédula 3, el 28 de agosto de 1998, tuve la bendición de nacer en una familia fuerte con dos hermanos y mis dos padres, quienes siempre me han apoyado y brindado su amor. Desde muy pequeño descubrí mi pasión por la tecnología y su importante función en la sociedad.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
