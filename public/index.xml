@@ -6,8 +6,15 @@
     <description>Recent content on angelortizv </description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 21 Jul 2025 21:44:34 -0600</lastBuildDate>
+    <lastBuildDate>Wed, 01 Oct 2025 16:05:47 -0600</lastBuildDate>
     <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>El Arte del Código Limpio: Una Guía para Escribir Software que Perdure</title>
+      <link>//localhost:1313/blog/el-arte-del-c%C3%B3digo-limpio-una-gu%C3%ADa-para-escribir-software-que-perdure/</link>
+      <pubDate>Wed, 01 Oct 2025 16:05:47 -0600</pubDate>
+      <guid>//localhost:1313/blog/el-arte-del-c%C3%B3digo-limpio-una-gu%C3%ADa-para-escribir-software-que-perdure/</guid>
+      <description>&lt;h1 id=&#34;el-arte-del-código-limpio-una-guía-para-escribir-software-que-perdure&#34;&gt;El Arte del Código Limpio: Una Guía para Escribir Software que Perdure&lt;/h1&gt;&#xA;&lt;p&gt;¿Alguna vez has abierto un archivo de código y has pensado &amp;ldquo;WTF&amp;rdquo;?. Si eres programador, es casi seguro que sí. Has tenido que navegar por una maraña de código mal escrito, perdiendo horas y recursos valiosos en el proceso. El código incorrecto no solo ralentiza el desarrollo y disminuye la productividad, sino que puede llevar al fracaso de una empresa.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>RLHF 101: ¿Qué es y por qué importa el Aprendizaje por Refuerzo con Retroalimentación Humana?</title>
       <link>//localhost:1313/blog/rlhf-101-qu%C3%A9-es-y-por-qu%C3%A9-importa-el-aprendizaje-por-refuerzo-con-retroalimentaci%C3%B3n-humana/</link>

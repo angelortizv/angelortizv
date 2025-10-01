@@ -3,18 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>//localhost:1313/</loc>
-    <lastmod>2025-07-21T21:44:34-06:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/blog/2025-rlhf101/</loc>
-    <lastmod>2025-07-21T21:44:34-06:00</lastmod>
+    <lastmod>2025-10-01T16:05:47-06:00</lastmod>
   </url><url>
     <loc>//localhost:1313/authors/angelo-ortiz-vega/</loc>
-    <lastmod>2025-07-21T21:44:34-06:00</lastmod>
+    <lastmod>2025-10-01T16:05:47-06:00</lastmod>
   </url><url>
     <loc>//localhost:1313/authors/</loc>
-    <lastmod>2025-07-21T21:44:34-06:00</lastmod>
+    <lastmod>2025-10-01T16:05:47-06:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/blog/el-arte-del-c%C3%B3digo-limpio-una-gu%C3%ADa-para-escribir-software-que-perdure/</loc>
+    <lastmod>2025-10-01T16:05:47-06:00</lastmod>
   </url><url>
     <loc>//localhost:1313/post/</loc>
+    <lastmod>2025-10-01T16:05:47-06:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/blog/rlhf-101-qu%C3%A9-es-y-por-qu%C3%A9-importa-el-aprendizaje-por-refuerzo-con-retroalimentaci%C3%B3n-humana/</loc>
     <lastmod>2025-07-21T21:44:34-06:00</lastmod>
   </url><url>
     <loc>//localhost:1313/blog/pdp-2024/</loc>
