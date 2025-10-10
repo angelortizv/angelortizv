@@ -6,8 +6,15 @@
     <description>Recent content in Angelo Ortiz Vega on angelortizv </description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 01 Oct 2025 16:05:47 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 10 Oct 2025 17:42:00 -0600</lastBuildDate>
     <atom:link href="//localhost:1313/authors/angelo-ortiz-vega/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Redes Neuronales Convolucionales: Una Guía Completa para Entender el Corazón de la Visión por Computadora</title>
+      <link>//localhost:1313/blog/redes-neuronales-convolucionales-una-gu%C3%ADa-completa-para-entender-el-coraz%C3%B3n-de-la-visi%C3%B3n-por-computadora/</link>
+      <pubDate>Fri, 10 Oct 2025 17:42:00 -0600</pubDate>
+      <guid>//localhost:1313/blog/redes-neuronales-convolucionales-una-gu%C3%ADa-completa-para-entender-el-coraz%C3%B3n-de-la-visi%C3%B3n-por-computadora/</guid>
+      <description>&lt;p&gt;Las Redes Neuronales Convolucionales, también conocidas como ConvNets o CNNs, son modelos de aprendizaje profundo que han revolucionado el campo de la visión por computadora. Estos algoritmos son la base para el reconocimiento de objetos, incluyendo la clasificación, detección y segmentación de imágenes. Se distinguen por su capacidad para procesar datos con una topología de cuadrícula, como las imágenes.&lt;/p&gt;&#xA;&lt;p&gt;En este artículo, exploraremos qué son las RNC, sus componentes fundamentales, cómo funcionan y las arquitecturas históricas que impulsaron su éxito.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>El Arte del Código Limpio: Una Guía para Escribir Software que Perdure</title>
       <link>//localhost:1313/blog/el-arte-del-c%C3%B3digo-limpio-una-gu%C3%ADa-para-escribir-software-que-perdure/</link>
