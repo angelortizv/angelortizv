@@ -3,16 +3,19 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>//localhost:1313/</loc>
-    <lastmod>2025-10-10T17:42:00-06:00</lastmod>
+    <lastmod>2025-10-13T10:15:46-06:00</lastmod>
   </url><url>
     <loc>//localhost:1313/authors/angelo-ortiz-vega/</loc>
-    <lastmod>2025-10-10T17:42:00-06:00</lastmod>
+    <lastmod>2025-10-13T10:15:46-06:00</lastmod>
   </url><url>
     <loc>//localhost:1313/authors/</loc>
-    <lastmod>2025-10-10T17:42:00-06:00</lastmod>
+    <lastmod>2025-10-13T10:15:46-06:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/blog/glosario-de-t%C3%A9rminos-clave-en-inteligencia-artificial/</loc>
+    <lastmod>2025-10-13T10:15:46-06:00</lastmod>
   </url><url>
     <loc>//localhost:1313/post/</loc>
-    <lastmod>2025-10-10T17:42:00-06:00</lastmod>
+    <lastmod>2025-10-13T10:15:46-06:00</lastmod>
   </url><url>
     <loc>//localhost:1313/blog/redes-neuronales-convolucionales-una-gu%C3%ADa-completa-para-entender-el-coraz%C3%B3n-de-la-visi%C3%B3n-por-computadora/</loc>
     <lastmod>2025-10-10T17:42:00-06:00</lastmod>
