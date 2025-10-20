@@ -6,8 +6,15 @@
     <description>Recent content on angelortizv </description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 13 Oct 2025 10:15:46 -0600</lastBuildDate>
+    <lastBuildDate>Mon, 20 Oct 2025 09:49:40 -0600</lastBuildDate>
     <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Estructuras de Datos y Algoritmos 101</title>
+      <link>//localhost:1313/blog/estructuras-de-datos-y-algoritmos-101/</link>
+      <pubDate>Mon, 20 Oct 2025 09:49:40 -0600</pubDate>
+      <guid>//localhost:1313/blog/estructuras-de-datos-y-algoritmos-101/</guid>
+      <description>&lt;h2 id=&#34;introducción&#34;&gt;Introducción&lt;/h2&gt;&#xA;&lt;p&gt;En el corazón de casi todo software moderno—desde motores de búsqueda y aplicaciones web hasta sistemas de IA y videojuegos—se encuentran las &lt;strong&gt;Estructuras de Datos y Algoritmos (DSA)&lt;/strong&gt;. Para cualquier programador aspirante o profesional, dominar DSA no es simplemente una habilidad deseable, sino una necesidad fundamental.&lt;/p&gt;&#xA;&lt;p&gt;Las &lt;strong&gt;Estructuras de Datos&lt;/strong&gt; definen cómo se almacena y organiza la información. Por otro lado, los &lt;strong&gt;Algoritmos&lt;/strong&gt; son conjuntos de instrucciones paso a paso diseñados para procesar o manipular esa información, resolviendo un problema específico.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Glosario de Términos Clave en Inteligencia Artificial</title>
       <link>//localhost:1313/blog/glosario-de-t%C3%A9rminos-clave-en-inteligencia-artificial/</link>
