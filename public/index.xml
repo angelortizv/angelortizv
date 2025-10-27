@@ -6,8 +6,15 @@
     <description>Recent content on angelortizv </description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 20 Oct 2025 09:49:40 -0600</lastBuildDate>
+    <lastBuildDate>Mon, 27 Oct 2025 09:17:22 -0600</lastBuildDate>
     <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Notación Big O</title>
+      <link>//localhost:1313/blog/notaci%C3%B3n-big-o/</link>
+      <pubDate>Mon, 27 Oct 2025 09:17:22 -0600</pubDate>
+      <guid>//localhost:1313/blog/notaci%C3%B3n-big-o/</guid>
+      <description>&lt;p&gt;En el vasto universo de la informática, no basta con que un algoritmo funcione; debe ser eficiente. La Notación Big O es la herramienta fundamental que los científicos de la computación y desarrolladores utilizan para cuantificar y describir la eficiencia y la escalabilidad de un algoritmo.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Big O notation&lt;/strong&gt; (Notación Gran O, simbolizada con la letra O mayúscula) es un poderoso simbolismo utilizado para describir el comportamiento asintótico de las funciones. Esencialmente, nos dice qué tan rápido crece el tiempo de ejecución (o el espacio de memoria requerido) de un algoritmo a medida que el tamaño de la entrada, $n$, aumenta.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Estructuras de Datos y Algoritmos 101</title>
       <link>//localhost:1313/blog/estructuras-de-datos-y-algoritmos-101/</link>

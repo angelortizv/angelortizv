@@ -6,8 +6,15 @@
     <description>Recent content in Angelo Ortiz Vega on angelortizv </description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 20 Oct 2025 09:49:40 -0600</lastBuildDate>
+    <lastBuildDate>Mon, 27 Oct 2025 09:17:22 -0600</lastBuildDate>
     <atom:link href="//localhost:1313/authors/angelo-ortiz-vega/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Notación Big O</title>
+      <link>//localhost:1313/blog/notaci%C3%B3n-big-o/</link>
+      <pubDate>Mon, 27 Oct 2025 09:17:22 -0600</pubDate>
+      <guid>//localhost:1313/blog/notaci%C3%B3n-big-o/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Estructuras de Datos y Algoritmos 101</title>
       <link>//localhost:1313/blog/estructuras-de-datos-y-algoritmos-101/</link>
