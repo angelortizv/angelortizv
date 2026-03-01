@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>angelortizv — Próximamente</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --term-bg: #0d0d12;
+      --green: #7ee787;
+      --gray: #8b8b9a;
+      --cyan: #79c0ff;
+      --orange: #d2a8ff;
+      --red: #ff7b72;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: "JetBrains Mono", monospace;
+      background: var(--bg);
+      color: var(--gray);
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    /* ——— Terminal (vista por defecto) ——— */
+    #terminal-wrap {
+      width: 100%;
+      max-width: 32rem;
+    }
+    #terminal-wrap.hidden {
+      display: none;
+    }
+    .terminal {
+      background: var(--term-bg);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .terminal .line {
+      margin-bottom: 0.15em;
+    }
+    .terminal .prompt { color: var(--green); }
+    .terminal .cmd { color: #e8e8ed; }
+    .terminal .progress { color: var(--cyan); }
+    .terminal .err { color: var(--red); }
+    .terminal .url { color: var(--orange); }
+    .terminal .url a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .terminal .url a:hover { opacity: 0.9; }
+    .cursor {
+      display: inline-block;
+      width: 0.6em;
+      height: 1em;
+      background: var(--green);
+      vertical-align: text-bottom;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+    .terminal-hint {
+      margin-top: 1rem;
+      font-size: 0.7rem;
+      color: var(--gray);
+      opacity: 0.6;
+    }
+    .terminal-hint-mobile {
+      display: none;
+      margin-top: 1rem;
+    }
+    .btn-jugar {
+      touch-action: manipulation;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: rgba(126, 231, 135, 0.15);
+      color: var(--green);
+      border: 1px solid rgba(126, 231, 135, 0.4);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-jugar:hover, .btn-jugar:active { background: rgba(126, 231, 135, 0.25); }
+    @media (max-width: 768px), (hover: none) {
+      .terminal-hint-desktop { display: none; }
+      .terminal-hint-mobile { display: block; }
+    }
+
+    /* ——— Nave (easter egg) ——— */
+    #game-wrap {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: none;
+    }
+    #game-wrap.active {
+      display: block;
+    }
+    #game {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .game-overlay {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--gray);
+      font-size: 0.75rem;
+      z-index: 11;
+    }
+    .game-ui {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      color: var(--green);
+      font-size: 0.85rem;
+      z-index: 11;
+    }
+    #game-over-msg {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(10,10,15,0.85);
+      color: var(--gray);
+      font-size: 1.25rem;
+      z-index: 12;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    #game-over-msg.show { display: flex; }
+    #game-over-msg .big { font-size: 1.75rem; color: var(--green); }
+
+    /* Controles táctiles (mobile) */
+    .touch-controls {
+      display: none;
+      position: absolute;
+      bottom: 4rem;
+      left: 0;
+      right: 0;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0 1rem;
+      z-index: 11;
+      pointer-events: none;
+    }
+    .touch-controls > * { pointer-events: auto; }
+    @media (max-width: 768px), (hover: none) {
+      .touch-controls {
+        display: flex;
+        bottom: 1.25rem;
+      }
+      .game-overlay { display: none; }
+    }
+    .touch-btn {
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 2px solid rgba(126, 231, 135, 0.5);
+      background: rgba(10, 10, 15, 0.8);
+      color: var(--green);
+      font-family: inherit;
+      font-size: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .touch-btn:active { background: rgba(126, 231, 135, 0.2); }
+    .touch-btn.fire { width: 72px; font-size: 0.85rem; }
+    .touch-btn.exit {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      width: 44px;
+      height: 44px;
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal-wrap">
+    <div class="terminal" id="terminal" role="log" aria-live="polite"></div>
+    <p class="terminal-hint terminal-hint-desktop">Escribe <kbd>nave</kbd> y Enter para el easter egg</p>
+    <p class="terminal-hint terminal-hint-mobile">Toca para jugar</p>
+    <p class="terminal-hint-mobile" style="margin-top: 0.5rem;">
+      <button type="button" class="btn-jugar" id="btn-jugar-easter">Jugar</button>
+    </p>
+  </div>
+
+  <div id="game-wrap" aria-hidden="true">
+    <canvas id="game"></canvas>
+    <div id="game-ui" class="game-ui">Puntos: <span id="score">0</span> · <span id="lives">3</span> vidas</div>
+    <button type="button" class="touch-btn exit" id="btn-exit" aria-label="Salir">Salir</button>
+    <div class="touch-controls" aria-label="Controles">
+      <button type="button" class="touch-btn" id="btn-left" aria-label="Izquierda">←</button>
+      <button type="button" class="touch-btn fire" id="btn-fire" aria-label="Disparar">DISPARO</button>
+      <button type="button" class="touch-btn" id="btn-right" aria-label="Derecha">→</button>
+    </div>
+    <div id="game-over-msg">
+      <span class="big" id="game-over-text">Game Over</span>
+      <span>Pulsa ESPACIO para reiniciar · ESC para salir</span>
+    </div>
+    <p class="game-overlay">← → mover · Espacio disparar · ESC volver</p>
+  </div>
+
+  <script>
+    (function() {
+      const terminalWrap = document.getElementById('terminal-wrap');
+      const terminal = document.getElementById('terminal');
+      const gameWrap = document.getElementById('game-wrap');
+      const canvas = document.getElementById('game');
+
+      let mode = 'terminal';
+      let typedKeys = '';
+      let terminalReady = false;
+      let terminalInputSpan = null;
+      let terminalInputCursor = null;
+
+      // ——— Terminal: typing effect ———
+      function el(tag, className, text) {
+        const e = document.createElement(tag);
+        if (className) e.className = className;
+        if (text) e.textContent = text;
+        return e;
+      }
+
+      function addLine(className, content) {
+        const line = el('div', 'line ' + (className || ''));
+        line.appendChild(content);
+        terminal.appendChild(line);
+        return line;
+      }
+
+      function typeChars(element, text, speed, done) {
+        let i = 0;
+        function step() {
+          if (i < text.length) {
+            element.textContent += text[i++];
+            setTimeout(step, speed);
+          } else if (done) done();
+        }
+        step();
+      }
+
+      function addTerminalInputLine() {
+        const lineDiv = el('div', 'line', null);
+        lineDiv.appendChild(el('span', 'prompt', '$ '));
+        const inputSpan = el('span', 'cmd', '');
+        const cursorSpan = el('span', 'cursor', '');
+        lineDiv.appendChild(inputSpan);
+        lineDiv.appendChild(cursorSpan);
+        terminal.appendChild(lineDiv);
+        return { input: inputSpan, cursor: cursorSpan };
+      }
+
+      function runTerminal() {
+        terminal.innerHTML = '';
+        terminalReady = false;
+        terminalInputSpan = null;
+        terminalInputCursor = null;
+        const prompt = '$ ';
+        const cmd = 'build angelortizv.com --prod';
+        const barFull = '[==============================] 100%';
+        const barMid = '[=============>                 ]  45%';
+        const err = 'Error: sitio en construcción.';
+        const url = 'Mientras tanto: ';
+        const link = 'https://angelortizv.me';
+
+        const line1 = el('span');
+        addLine('', line1);
+        const promptSpan1 = el('span', 'prompt', prompt);
+        line1.appendChild(promptSpan1);
+        const cmdSpan = el('span', 'cmd', '');
+        line1.appendChild(cmdSpan);
+        const cursor1 = el('span', 'cursor');
+        line1.appendChild(cursor1);
+
+        typeChars(cmdSpan, cmd, 50, function() {
+          setTimeout(function() {
+            var enterSpan = el('span', 'prompt', ' ↵');
+            enterSpan.style.opacity = '0.7';
+            line1.appendChild(enterSpan);
+            setTimeout(function() {
+              line1.removeChild(cursor1);
+              line1.removeChild(enterSpan);
+              setTimeout(function() {
+                const line2 = el('div', 'line progress', barMid);
+                terminal.appendChild(line2);
+                setTimeout(function() {
+                  line2.textContent = barFull;
+                  setTimeout(function() {
+                    const line3 = el('div', 'line err', err);
+                    terminal.appendChild(line3);
+                    setTimeout(function() {
+                      const line4 = el('div', 'line url');
+                      line4.appendChild(document.createTextNode(url));
+                      const a = document.createElement('a');
+                      a.href = link;
+                      a.target = '_blank';
+                      a.rel = 'noopener';
+                      a.textContent = 'angelortizv.me';
+                      line4.appendChild(a);
+                      terminal.appendChild(line4);
+                      setTimeout(function() {
+                        var t = addTerminalInputLine();
+                        terminalInputSpan = t.input;
+                        terminalInputCursor = t.cursor;
+                        terminalReady = true;
+                      }, 400);
+                    }, 400);
+                  }, 900);
+                }, 600);
+              }, 220);
+            }, 380);
+          }, 520);
+        });
+      }
+
+      function showTerminal() {
+        mode = 'terminal';
+        terminalWrap.classList.remove('hidden');
+        gameWrap.classList.remove('active');
+        stopGame();
+        if (terminalInputSpan) { terminalInputSpan.textContent = ''; }
+        typedKeys = '';
+      }
+
+      function showShip() {
+        mode = 'ship';
+        terminalWrap.classList.add('hidden');
+        gameWrap.classList.add('active');
+        startGame();
+      }
+
+      // ——— Easter egg: input visible en la terminal + "nave" Enter ———
+      window.addEventListener('keydown', function(e) {
+        if (mode === 'terminal' && terminalReady && terminalInputSpan) {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            if (typedKeys === 'nave') {
+              if (terminalInputCursor && terminalInputCursor.parentNode) terminalInputCursor.parentNode.removeChild(terminalInputCursor);
+              typedKeys = '';
+              showShip();
+            } else {
+              if (terminalInputCursor && terminalInputCursor.parentNode) terminalInputCursor.parentNode.removeChild(terminalInputCursor);
+              var errLine = el('div', 'line err', 'comando no encontrado' + (typedKeys ? ': ' + typedKeys : ''));
+              terminal.appendChild(errLine);
+              typedKeys = '';
+              var t = addTerminalInputLine();
+              terminalInputSpan = t.input;
+              terminalInputCursor = t.cursor;
+            }
+            return;
+          }
+          if (e.key === 'Backspace') {
+            e.preventDefault();
+            typedKeys = typedKeys.slice(0, -1);
+            terminalInputSpan.textContent = typedKeys;
+            return;
+          }
+          if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+            e.preventDefault();
+            typedKeys = (typedKeys + e.key.toLowerCase()).slice(-20);
+            terminalInputSpan.textContent = typedKeys;
+          }
+          return;
+        }
+        if (mode === 'ship' && e.key === 'Escape') {
+          e.preventDefault();
+          showTerminal();
+        }
+      });
+
+      var btnJugar = document.getElementById('btn-jugar-easter');
+      if (btnJugar) btnJugar.addEventListener('click', function() { showShip(); });
+
+      // ——— Space Invaders (easter egg) ———
+      let gameRunning = false;
+      let animId = null;
+      let ctx, w, h;
+      const keys = { left: false, right: false, fire: false };
+      let player = { x: 0, y: 0, width: 36, height: 18, speed: 5 };
+      let bullets = [];
+      let invaders = [];
+      let invaderDir = 1;
+      let invaderStepDown = false;
+      let invaderSpeed = 1.9;
+      let lastInvaderMove = 0;
+      let lastBulletTime = 0;
+      let score = 0;
+      let lives = 3;
+      let gameOver = false;
+      let gameWon = false;
+      const INV_ROWS = 5;
+      const INV_COLS = 10;
+      const INV_W = 20;
+      const INV_H = 14;
+      const INV_GAP = 5;
+      const BULLET_SPEED = 12;
+      const FIRE_COOLDOWN = 380;
+      let stars = [];
+
+      function initStars() {
+        stars = [];
+        for (let i = 0; i < 80; i++) {
+          stars.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            r: Math.random() * 1 + 0.3,
+            bright: 0.3 + Math.random() * 0.4
+          });
+        }
+      }
+
+      function spawnInvaders() {
+        invaders = [];
+        const startX = (w - (INV_COLS * (INV_W + INV_GAP) - INV_GAP)) / 2 + (INV_W + INV_GAP) / 2;
+        const startY = 50;
+        for (let row = 0; row < INV_ROWS; row++) {
+          for (let col = 0; col < INV_COLS; col++) {
+            invaders.push({
+              x: startX + col * (INV_W + INV_GAP),
+              y: startY + row * (INV_H + INV_GAP),
+              w: INV_W,
+              h: INV_H,
+              alive: true
+            });
+          }
+        }
+      }
+
+      function resetGame() {
+        bullets = [];
+        invaderDir = 1;
+        invaderStepDown = false;
+        lastInvaderMove = 0;
+        lastBulletTime = 0;
+        gameOver = false;
+        gameWon = false;
+        score = 0;
+        lives = 3;
+        player.x = w / 2 - player.width / 2;
+        player.y = h - player.height - 125;
+        spawnInvaders();
+        document.getElementById('game-over-msg').classList.remove('show');
+        document.getElementById('game-over-text').textContent = 'Game Over';
+        document.getElementById('game-over-msg').querySelector('span:last-child').textContent = 'ESPACIO reiniciar · ESC salir';
+        document.getElementById('score').textContent = '0';
+        document.getElementById('lives').textContent = '3';
+      }
+
+      function startGame() {
+        if (gameRunning) return;
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+        ctx = canvas.getContext('2d');
+        player.x = w / 2 - player.width / 2;
+        player.y = h - player.height - 125;
+        initStars();
+        resetGame();
+        gameRunning = true;
+        window.addEventListener('keydown', keyDown);
+        window.addEventListener('keyup', keyUp);
+        window.addEventListener('resize', onResize);
+        setupTouchControls();
+        loop();
+      }
+
+      function stopGame() {
+        gameRunning = false;
+        if (animId) cancelAnimationFrame(animId);
+        window.removeEventListener('keydown', keyDown);
+        window.removeEventListener('keyup', keyUp);
+        window.removeEventListener('resize', onResize);
+      }
+
+      function setupTouchControls() {
+        function prevent(e) { e.preventDefault(); }
+        var btnLeft = document.getElementById('btn-left');
+        var btnRight = document.getElementById('btn-right');
+        var btnFire = document.getElementById('btn-fire');
+        var btnExit = document.getElementById('btn-exit');
+        btnLeft.addEventListener('touchstart', function(e) { keys.left = true; prevent(e); }, { passive: false });
+        btnLeft.addEventListener('touchend', function() { keys.left = false; });
+        btnLeft.addEventListener('touchcancel', function() { keys.left = false; });
+        btnRight.addEventListener('touchstart', function(e) { keys.right = true; prevent(e); }, { passive: false });
+        btnRight.addEventListener('touchend', function() { keys.right = false; });
+        btnRight.addEventListener('touchcancel', function() { keys.right = false; });
+        btnFire.addEventListener('touchstart', function(e) { keys.fire = true; prevent(e); }, { passive: false });
+        btnFire.addEventListener('touchend', function() { keys.fire = false; });
+        btnFire.addEventListener('touchcancel', function() { keys.fire = false; });
+        btnExit.addEventListener('click', showTerminal);
+        btnExit.addEventListener('touchstart', function(e) { e.preventDefault(); showTerminal(); }, { passive: false });
+      }
+
+      function keyDown(e) {
+        if (gameOver || gameWon) {
+          if (e.key === ' ') {
+            e.preventDefault();
+            resetGame();
+          }
+          if (e.key === 'Escape') showTerminal();
+          return;
+        }
+        if (e.key === 'ArrowLeft' || e.key === 'a') keys.left = true;
+        if (e.key === 'ArrowRight' || e.key === 'd') keys.right = true;
+        if (e.key === ' ' || e.key === 'w') {
+          keys.fire = true;
+          e.preventDefault();
+        }
+        if (['ArrowLeft','ArrowRight',' ','a','d','w'].includes(e.key)) e.preventDefault();
+      }
+      function keyUp(e) {
+        if (e.key === 'ArrowLeft' || e.key === 'a') keys.left = false;
+        if (e.key === 'ArrowRight' || e.key === 'd') keys.right = false;
+        if (e.key === ' ' || e.key === 'w') keys.fire = false;
+      }
+
+      function onResize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+        player.x = Math.max(0, Math.min(player.x, w - player.width));
+        player.y = h - player.height - 125;
+        spawnInvaders();
+        initStars();
+      }
+
+      function drawPlayer() {
+        const px = player.x;
+        const py = player.y;
+        ctx.fillStyle = '#7c6ee8';
+        ctx.shadowColor = '#7c6ee8';
+        ctx.shadowBlur = 8;
+        ctx.beginPath();
+        ctx.moveTo(px + player.width / 2, py);
+        ctx.lineTo(px + player.width, py + player.height);
+        ctx.lineTo(px + player.width * 0.6, py + player.height * 0.7);
+        ctx.lineTo(px + player.width * 0.4, py + player.height * 0.7);
+        ctx.lineTo(px, py + player.height);
+        ctx.closePath();
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+
+      function hitTest(b, inv) {
+        return b.x < inv.x + inv.w && b.x + 4 > inv.x && b.y < inv.y + inv.h && b.y + 10 > inv.y;
+      }
+
+      function loop() {
+        if (!gameRunning || !ctx) return;
+        animId = requestAnimationFrame(loop);
+
+        if (gameOver || gameWon) {
+          ctx.fillStyle = '#0a0a0f';
+          ctx.fillRect(0, 0, w, h);
+          stars.forEach(function(s) {
+            ctx.fillStyle = 'rgba(200,200,255,' + s.bright + ')';
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+            ctx.fill();
+          });
+          return;
+        }
+
+        const now = performance.now();
+        if (keys.left) player.x = Math.max(0, player.x - player.speed);
+        if (keys.right) player.x = Math.min(w - player.width, player.x + player.speed);
+        if (keys.fire && now - lastBulletTime > FIRE_COOLDOWN) {
+          lastBulletTime = now;
+          bullets.push({ x: player.x + player.width / 2 - 2, y: player.y, w: 4, h: 10 });
+        }
+
+        bullets = bullets.filter(function(b) {
+          b.y -= BULLET_SPEED;
+          if (b.y + b.h < 0) return false;
+          for (let i = 0; i < invaders.length; i++) {
+            if (invaders[i].alive && hitTest(b, invaders[i])) {
+              invaders[i].alive = false;
+              score += 10;
+              document.getElementById('score').textContent = score;
+              return false;
+            }
+          }
+          return true;
+        });
+
+        if (now - lastInvaderMove > 1000 / invaderSpeed) {
+          lastInvaderMove = now;
+          const alive = invaders.filter(function(inv) { return inv.alive; });
+          if (alive.length === 0) {
+            gameWon = true;
+            document.getElementById('game-over-text').textContent = '¡Ganaste!';
+            document.getElementById('game-over-msg').querySelector('span:last-child').textContent = 'ESPACIO otra ronda · ESC salir';
+            document.getElementById('game-over-msg').classList.add('show');
+            return;
+          }
+          let hitEdge = false;
+          alive.forEach(function(inv) {
+            if (invaderStepDown) inv.y += INV_H;
+            else {
+              inv.x += invaderDir * 10;
+              if (inv.x <= 0 || inv.x + inv.w >= w) hitEdge = true;
+            }
+            if (inv.y + inv.h >= player.y) gameOver = true;
+          });
+          if (hitEdge && !invaderStepDown) invaderDir *= -1;
+          invaderStepDown = hitEdge;
+        }
+
+        if (gameOver) {
+          document.getElementById('game-over-text').textContent = 'Game Over';
+          document.getElementById('game-over-msg').querySelector('span:last-child').textContent = 'ESPACIO reiniciar · ESC salir';
+          document.getElementById('game-over-msg').classList.add('show');
+          return;
+        }
+
+        ctx.fillStyle = '#0a0a0f';
+        ctx.fillRect(0, 0, w, h);
+        stars.forEach(function(s) {
+          ctx.fillStyle = 'rgba(200,200,255,' + s.bright + ')';
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        invaders.forEach(function(inv) {
+          if (!inv.alive) return;
+          ctx.fillStyle = '#ff7b72';
+          ctx.fillRect(inv.x, inv.y, inv.w, inv.h);
+          ctx.fillStyle = '#ffa198';
+          ctx.fillRect(inv.x + 4, inv.y + 3, inv.w - 8, inv.h - 6);
+        });
+        bullets.forEach(function(b) {
+          ctx.fillStyle = '#7ee787';
+          ctx.fillRect(b.x, b.y, b.w, b.h);
+        });
+        drawPlayer();
+      }
+
+      runTerminal();
+    })();
+  </script>
+</body>
+</html>
