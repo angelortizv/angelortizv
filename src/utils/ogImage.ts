@@ -1,4 +1,5 @@
 import sharp from 'sharp';
+import { siteMarkGroup } from './siteMark';
 
 function escapeXml(text: string): string {
   return text
@@ -47,7 +48,7 @@ export function buildOgSvg(title: string, subtitle = 'Angelo Ortiz Vega'): strin
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
   <rect x="0" y="0" width="1200" height="630" fill="none" stroke="#262626" stroke-width="1"/>
-  <rect x="80" y="72" width="56" height="5" rx="1" fill="#e8813a"/>
+  ${siteMarkGroup('translate(1088, 44) scale(2.5)')}
   <text font-family="Georgia, 'Times New Roman', serif" font-size="54" font-weight="600" fill="#f5f5f5" letter-spacing="-0.02em">${titleLines}</text>
   <text x="80" y="415" font-family="system-ui, sans-serif" font-size="26" fill="#888888">${escapeXml(subtitle)}</text>
   <line x1="80" y1="460" x2="240" y2="460" stroke="#262626" stroke-width="1"/>
