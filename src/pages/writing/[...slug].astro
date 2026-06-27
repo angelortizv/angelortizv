@@ -12,6 +12,9 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+
+const words = post.body.split(/\s+/).filter(Boolean).length;
+const readingTime = Math.max(1, Math.round(words / 200));
 ---
 
 <PostLayout
@@ -20,6 +23,7 @@ const { Content } = await post.render();
   description={post.data.description}
   tags={post.data.tags}
   slug={post.slug}
+  readingTime={readingTime}
 >
   <Content />
 </PostLayout>

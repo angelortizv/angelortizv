@@ -7,9 +7,10 @@ interface Props {
   description?: string;
   tags?: string[];
   slug?: string;
+  readingTime?: number;
 }
 
-const { title, date, description, tags = [], slug } = Astro.props;
+const { title, date, description, tags = [], slug, readingTime } = Astro.props;
 
 const formatted = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
@@ -27,13 +28,16 @@ const canonicalUrl = slug ? new URL(`/writing/${slug}/`, Astro.site).href : unde
   ogUrl={canonicalUrl}
   publishedTime={date.toISOString()}
 >
-  <a href="/writing" class="back-link">← Writing</a>
+  <a href="/writing" class="back-link">← Escritura</a>
 
   <article>
     <header class="article-header">
       <h1>{title}</h1>
       <div class="article-meta">
         <time class="article-date" datetime={date.toISOString()}>{formatted}</time>
+        {readingTime && (
+          <span class="reading-time">{readingTime} min de lectura</span>
+        )}
         {tags.length > 0 && (
           <div class="tags">
             {tags.map(tag => <span class="tag">{tag}</span>)}
