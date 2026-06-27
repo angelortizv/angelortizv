@@ -5,6 +5,8 @@ import PostNav from '../../components/PostNav.astro';
 import { formatDate } from '../../utils/formatDate';
 import { extractHeadings } from '../../utils/extractHeadings';
 import { getReadingTime } from '../../utils/readingTime';
+import { getSeriesPosts } from '../../utils/series';
+import type { SeriesSlug } from '../../data/series';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -33,6 +35,9 @@ const related = allPosts
     return sharedB - sharedA || b.data.date.valueOf() - a.data.date.valueOf();
   })
   .slice(0, 3);
+
+const seriesSlug = post.data.series as SeriesSlug | undefined;
+const seriesPosts = seriesSlug ? getSeriesPosts(allPosts, seriesSlug) : [];
 ---
 
 <PostLayout
@@ -43,6 +48,8 @@ const related = allPosts
   slug={post.slug}
   readingTime={readingTime}
   headings={headings}
+  series={seriesSlug}
+  seriesPosts={seriesPosts}
 >
   <Content />
 

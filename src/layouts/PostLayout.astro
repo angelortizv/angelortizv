@@ -1,8 +1,13 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import TableOfContents from '../components/TableOfContents.astro';
+import SeriesNav from '../components/SeriesNav.astro';
 import { formatDate } from '../utils/formatDate';
+import { buildBlogPostingSchema } from '../utils/blogPostingSchema';
 import type { Heading } from '../utils/extractHeadings';
+import type { CollectionEntry } from 'astro:content';
+import type { SeriesSlug } from '../data/series';
+import { getSeriesMeta } from '../utils/series';
 
 interface Props {
   title: string;
@@ -12,14 +17,30 @@ interface Props {
   slug?: string;
   readingTime?: number;
   headings?: Heading[];
+  series?: SeriesSlug;
+  seriesPosts?: CollectionEntry<'posts'>[];
 }
 
-const { title, date, description, tags = [], slug, readingTime, headings = [] } = Astro.props;
+const {
+  title,
+  date,
+  description,
+  tags = [],
+  slug,
+  readingTime,
+  headings = [],
+  series,
+  seriesPosts = [],
+} = Astro.props;
 
 const formatted = formatDate(date);
 const canonicalUrl = slug ? new URL(`/writing/${slug}/`, Astro.site).href : undefined;
 const ogImage = slug ? `/og/${slug}` : undefined;
 const showToc = readingTime !== undefined && readingTime >= 6 && headings.length > 0;
+const seriesMeta = series ? getSeriesMeta(series) : null;
+const jsonLd = slug
+  ? buildBlogPostingSchema({ title, description, date, slug, site: Astro.site })
+  : undefined;
 ---
 
 <BaseLayout
@@ -29,11 +50,17 @@ const showToc = readingTime !== undefined && readingTime >= 6 && headings.length
   ogUrl={canonicalUrl}
   ogImage={ogImage}
   publishedTime={date.toISOString()}
+  jsonLd={jsonLd}
 >
   <a href="/writing" class="back-link">← Escritura</a>
 
   <article>
     <header class="article-header">
+      {seriesMeta && (
+        <p class="series-label">
+          Serie · <a href={`/series/${series}`}>{seriesMeta.title}</a>
+        </p>
+      )}
       <h1>{title}</h1>
       <div class="article-meta">
         <time class="article-date" datetime={date.toISOString()}>{formatted}</time>
@@ -49,6 +76,10 @@ const showToc = readingTime !== undefined && readingTime >= 6 && headings.length
     </header>
 
     {showToc && <TableOfContents headings={headings} />}
+
+    {series && seriesPosts.length > 1 && (
+      <SeriesNav seriesSlug={series} currentSlug={slug!} posts={seriesPosts} />
+    )}
 
     <div class="prose">
       <slot />

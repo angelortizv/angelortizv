@@ -11,6 +11,7 @@ interface Props {
   ogUrl?: string;
   ogImage?: string;
   publishedTime?: string;
+  jsonLd?: Record<string, unknown>;
 }
 
 const {
@@ -20,6 +21,7 @@ const {
   ogUrl,
   ogImage,
   publishedTime,
+  jsonLd,
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
@@ -73,6 +75,9 @@ const siteName = 'Angelo Ortiz Vega';
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" type="application/rss+xml" title={siteName} href="/rss.xml" />
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
   </head>
   <body id="top">
     <a href="#main-content" class="skip-link">Saltar al contenido</a>
@@ -102,7 +107,7 @@ const siteName = 'Angelo Ortiz Vega';
         <div class="footer-links">
           <ThemeToggle />
           <a href="https://www.angelortizv.me" target="_blank" rel="noopener">angelortizv.me</a>
-          <a href="https://github.com/angelortizv" target="_blank" rel="noopener">GitHub</a>
+          <a href="/now">Ahora</a>
           <a href="/rss.xml">RSS</a>
         </div>
       </footer>

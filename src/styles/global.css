@@ -1154,6 +1154,129 @@ mark {
   overflow-y: hidden;
 }
 
+/* ─── Series & Now ─── */
+
+.series-label {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.series-label a {
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.series-label a:hover { color: var(--text); }
+
+.series-nav {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg-subtle);
+}
+
+.series-nav-label {
+  margin-bottom: 0.75rem;
+}
+
+.series-nav-label a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.series-nav-label a:hover { text-decoration: underline; }
+
+.series-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.series-nav-item {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.series-nav-part {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  min-width: 1.25rem;
+}
+
+.series-nav-item--current .series-nav-current {
+  color: var(--text-muted);
+}
+
+.series-index {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.series-index-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.series-index-item:hover .series-index-title {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.series-index-title {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+}
+
+.series-index-count {
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.series-index-desc {
+  margin: 0.375rem 0 0;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.now-updated {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.now-content {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--text-body);
+}
+
+.now-content p + p {
+  margin-top: 1rem;
+}
+
+.now-footer {
+  margin-top: 2.5rem;
+  font-size: 0.875rem;
+}
+
 /* ─── Utilities ─── */
 
 .sr-only {

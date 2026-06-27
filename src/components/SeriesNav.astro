@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getSeriesMeta } from '../utils/series';
+import type { SeriesSlug } from '../data/series';
+
+interface Props {
+  seriesSlug: SeriesSlug;
+  currentSlug: string;
+  posts: CollectionEntry<'posts'>[];
+}
+
+const { seriesSlug, currentSlug, posts } = Astro.props;
+const meta = getSeriesMeta(seriesSlug);
+---
+
+<nav class="series-nav" aria-label={`Serie: ${meta.title}`}>
+  <p class="home-section-title series-nav-label">
+    <a href={`/series/${seriesSlug}`}>{meta.title}</a>
+  </p>
+  <ol class="series-nav-list">
+    {posts.map((post, i) => (
+      <li class:list={['series-nav-item', post.slug === currentSlug && 'series-nav-item--current']}>
+        <span class="series-nav-part">{i + 1}.</span>
+        {post.slug === currentSlug ? (
+          <span class="series-nav-current">{post.data.title}</span>
+        ) : (
+          <a href={`/writing/${post.slug}`}>{post.data.title}</a>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>

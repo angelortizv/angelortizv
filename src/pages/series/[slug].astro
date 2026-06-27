@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostListItem from '../../components/PostListItem.astro';
+import { getCollection } from 'astro:content';
+import { SERIES_META, type SeriesSlug } from '../../data/series';
+import { getSeriesPosts } from '../../utils/series';
+import { getReadingTime } from '../../utils/readingTime';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  const slugs = Object.keys(SERIES_META) as SeriesSlug[];
+
+  return slugs
+    .filter(slug => getSeriesPosts(posts, slug).length > 0)
+    .map(slug => ({
+      params: { slug },
+      props: { posts: getSeriesPosts(posts, slug) },
+    }));
+}
+
+const { slug } = Astro.params as { slug: SeriesSlug };
+const { posts } = Astro.props;
+const meta = SERIES_META[slug];
+---
+
+<BaseLayout
+  title={`${meta.title} — Serie — Angelo Ortiz`}
+  description={meta.description}
+>
+  <a href="/series" class="back-link">← Series</a>
+
+  <div class="page-header">
+    <h1>{meta.title}</h1>
+    <p>{meta.description}</p>
+  </div>
+
+  <ul class="post-list">
+    {posts.map(post => (
+      <PostListItem
+        slug={post.slug}
+        title={post.data.title}
+        date={post.data.date}
+        description={post.data.description}
+        tags={post.data.tags}
+        readingTime={getReadingTime(post.body)}
+      />
+    ))}
+  </ul>
+</BaseLayout>
