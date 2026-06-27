@@ -1262,14 +1262,13 @@ mark {
   font-style: italic;
 }
 
-.now-content {
+.now-content.prose {
   font-size: 0.9375rem;
   line-height: 1.65;
-  color: var(--text-body);
 }
 
-.now-content p + p {
-  margin-top: 1rem;
+.now-content.prose p:last-child {
+  margin-bottom: 0;
 }
 
 .now-footer {

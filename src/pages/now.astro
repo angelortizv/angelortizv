@@ -1,10 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry } from 'astro:content';
+import { formatMonthYear } from '../utils/formatDate';
 
-const updated = new Intl.DateTimeFormat('es-CR', {
-  year: 'numeric',
-  month: 'long',
-}).format(new Date());
+const entry = await getEntry('now', 'index');
+if (!entry) throw new Error('Falta src/content/now/index.md');
+
+const { Content } = await entry.render();
+const updatedLabel = formatMonthYear(entry.data.updated);
 ---
 
 <BaseLayout
@@ -13,26 +16,11 @@ const updated = new Intl.DateTimeFormat('es-CR', {
 >
   <div class="page-header">
     <h1>Ahora</h1>
-    <p class="now-updated">Actualizado {updated}</p>
+    <p class="now-updated">Actualizado {updatedLabel}</p>
   </div>
 
-  <div class="now-content">
-    <p>
-      Leyendo <em>Los primeros 90 días</em>, de Michael D. Watkins.
-    </p>
-
-    <p>
-      Lo agarré porque estoy en medio de varias transiciones a la vez — en el trabajo,
-      en cómo reparto la energía entre proyectos — y el libro insiste
-      en algo que me parece cierto: los primeros meses de un cambio grande no son un
-      período de adaptación pasiva; son los que más pesan. Watkins escribe sobre roles
-      nuevos, pero la lógica aplica igual cuando estás renegociando prioridades o
-      aterrizando en algo que llevas meses planeando.
-    </p>
-
-    <p>
-      Quiero llegar con intención, no solo con buenas intenciones.
-    </p>
+  <div class="now-content prose">
+    <Content />
   </div>
 
   <p class="now-footer">
