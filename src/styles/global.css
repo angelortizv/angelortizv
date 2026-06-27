@@ -652,6 +652,10 @@ a.tag:hover {
 
 .year-label { margin-bottom: 0; }
 
+.load-more-footer[hidden] {
+  display: none !important;
+}
+
 .load-more-btn {
   display: block;
   width: 100%;
@@ -669,9 +673,27 @@ a.tag:hover {
   transition: color 0.15s, border-color 0.15s;
 }
 
+.load-more-btn[hidden] {
+  display: none !important;
+}
+
 .load-more-btn:hover {
   color: var(--text);
   border-color: var(--text-muted);
+}
+
+.load-more-end {
+  margin-top: 1rem;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.load-more-end[hidden] {
+  display: none !important;
 }
 
 /* ─── Search modal ─── */

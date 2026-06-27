@@ -58,24 +58,33 @@ const filterKeys = [
     </section>
   ))}
 
-  <button type="button" class="load-more-btn" id="load-more" hidden>
-    Cargar más
-  </button>
+  <div class="load-more-footer" id="load-more-footer" hidden>
+    <button type="button" class="load-more-btn" id="load-more">
+      Cargar más
+    </button>
+    <p class="load-more-end" id="load-more-end" hidden>
+      Llegaste al final
+    </p>
+  </div>
 </BaseLayout>
 
 <script define:vars={{ POSTS_PER_PAGE }}>
   function initWritingList() {
+    const footer = document.getElementById('load-more-footer');
     const items = [...document.querySelectorAll('.post-item')];
     const sections = [...document.querySelectorAll('.year-section')];
     const loadMoreBtn = document.getElementById('load-more');
+    const endMessage = document.getElementById('load-more-end');
     const filterBtns = [...document.querySelectorAll('.filter-btn')];
 
-    if (!items.length || !loadMoreBtn) return;
+    if (!footer || !items.length || !loadMoreBtn || !endMessage) return;
+    if (footer.dataset.ready) return;
+    footer.dataset.ready = 'true';
 
     let activeFilter = 'all';
     let visibleLimit = POSTS_PER_PAGE;
 
-    function getVisibleItems() {
+    function getMatchingItems() {
       return items.filter(item => {
         const type = item.dataset.contentType;
         return activeFilter === 'all' || type === activeFilter;
@@ -83,7 +92,10 @@ const filterKeys = [
     }
 
     function updateView() {
-      const matching = getVisibleItems();
+      const matching = getMatchingItems();
+      const total = matching.length;
+      const atEnd = visibleLimit >= total;
+      const needsPagination = total > POSTS_PER_PAGE;
 
       items.forEach(item => item.classList.add('post-item--hidden'));
 
@@ -96,7 +108,9 @@ const filterKeys = [
         section.classList.toggle('year-section--hidden', visibleInSection.length === 0);
       });
 
-      loadMoreBtn.hidden = visibleLimit >= matching.length;
+      footer.hidden = !needsPagination;
+      loadMoreBtn.hidden = !needsPagination || atEnd;
+      endMessage.hidden = !needsPagination || !atEnd;
     }
 
     filterBtns.forEach(btn => {
