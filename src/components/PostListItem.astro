@@ -1,5 +1,6 @@
 ---
 import { formatDate } from '../utils/formatDate';
+import { isNewPost } from '../utils/isNewPost';
 
 interface Props {
   slug: string;
@@ -22,6 +23,8 @@ const {
   contentType,
   index,
 } = Astro.props;
+
+const isNew = isNewPost(date);
 ---
 
 <li
@@ -33,7 +36,10 @@ const {
     {formatDate(date)}
   </time>
   <div class="post-item-body">
-    <a class="post-title-link" href={`/writing/${slug}`}>{title}</a>
+    <div class="post-title-row">
+      <a class="post-title-link" href={`/writing/${slug}`}>{title}</a>
+      {isNew && <span class="badge-new">Nuevo</span>}
+    </div>
     {description && <p class="post-excerpt">{description}</p>}
     {(readingTime || tags.length > 0) && (
       <div class="post-item-meta">

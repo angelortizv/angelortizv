@@ -1,5 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import PostListItem from '../components/PostListItem.astro';
+import { getReadingTime } from '../utils/readingTime';
+
+const allPosts = await getCollection('posts', ({ data }) => !data.draft);
+const recent = allPosts
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
 ---
 
 <BaseLayout title="404 — Angelo Ortiz">
@@ -9,6 +17,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p class="error-message">
       Esta página no existe o fue movida.
     </p>
-    <a href="/" class="link-accent">← Volver al inicio</a>
+    <div class="error-actions">
+      <a href="/" class="link-accent">← Volver al inicio</a>
+      <button type="button" class="link-accent link-btn" data-search-open>Buscar en el blog</button>
+    </div>
   </div>
+
+  {recent.length > 0 && (
+    <section class="error-suggestions">
+      <p class="home-section-title">Quizás buscabas</p>
+      <ul class="post-list">
+        {recent.map(post => (
+          <PostListItem
+            slug={post.slug}
+            title={post.data.title}
+            date={post.data.date}
+            description={post.data.description}
+            tags={post.data.tags}
+            readingTime={getReadingTime(post.body)}
+          />
+        ))}
+      </ul>
+    </section>
+  )}
 </BaseLayout>

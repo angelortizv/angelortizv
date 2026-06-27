@@ -81,8 +81,9 @@ const filterKeys = [
     if (footer.dataset.ready) return;
     footer.dataset.ready = 'true';
 
+    const PAGE_SIZE = Number(POSTS_PER_PAGE) || 10;
     let activeFilter = 'all';
-    let visibleLimit = POSTS_PER_PAGE;
+    let visibleLimit = PAGE_SIZE;
 
     function getMatchingItems() {
       return items.filter(item => {
@@ -94,12 +95,13 @@ const filterKeys = [
     function updateView() {
       const matching = getMatchingItems();
       const total = matching.length;
-      const atEnd = visibleLimit >= total;
-      const needsPagination = total > POSTS_PER_PAGE;
+      const shown = Math.min(visibleLimit, total);
+      const atEnd = shown >= total;
+      const needsPagination = total > PAGE_SIZE;
 
       items.forEach(item => item.classList.add('post-item--hidden'));
 
-      matching.slice(0, visibleLimit).forEach(item => {
+      matching.slice(0, shown).forEach(item => {
         item.classList.remove('post-item--hidden');
       });
 
@@ -110,13 +112,13 @@ const filterKeys = [
 
       footer.hidden = !needsPagination;
       loadMoreBtn.hidden = !needsPagination || atEnd;
-      endMessage.hidden = !needsPagination || !atEnd;
+      endMessage.hidden = !needsPagination || !atEnd || shown <= PAGE_SIZE;
     }
 
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         activeFilter = btn.dataset.filter ?? 'all';
-        visibleLimit = POSTS_PER_PAGE;
+        visibleLimit = PAGE_SIZE;
 
         filterBtns.forEach(b => {
           b.setAttribute('aria-pressed', String(b === btn));
@@ -127,7 +129,7 @@ const filterKeys = [
     });
 
     loadMoreBtn.addEventListener('click', () => {
-      visibleLimit += POSTS_PER_PAGE;
+      visibleLimit += PAGE_SIZE;
       updateView();
     });
 

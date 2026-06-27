@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import 'katex/dist/katex.min.css';
 import SearchModal from '../components/SearchModal.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
 
 interface Props {
   title: string;
@@ -38,6 +39,21 @@ const siteName = 'Angelo Ortiz Vega';
     <link rel="canonical" href={canonicalUrl} />
     <title>{title}</title>
 
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" id="theme-color-meta" content="#0a0a0a" />
+
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem('theme');
+        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        const theme = stored ?? (prefersLight ? 'light' : 'dark');
+        document.documentElement.dataset.theme = theme;
+        const meta = document.getElementById('theme-color-meta');
+        if (meta) meta.setAttribute('content', theme === 'light' ? '#fafafa' : '#0a0a0a');
+      })();
+    </script>
+
     <!-- Open Graph -->
     <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
@@ -64,7 +80,7 @@ const siteName = 'Angelo Ortiz Vega';
     <div class="site-wrapper">
       <header>
         <div class="inner">
-          <a href="/" class="site-name">Angelo Ortiz</a>
+          <a href="/" class="site-name">Angelo</a>
           <nav aria-label="Navegación principal">
             <a href="/writing" aria-current={currentPath.startsWith('/writing') ? 'page' : undefined}>Escritura</a>
             <a href="/tags" aria-current={currentPath.startsWith('/tags') ? 'page' : undefined}>Categorías</a>
@@ -84,6 +100,7 @@ const siteName = 'Angelo Ortiz Vega';
       <footer>
         <p>© {new Date().getFullYear()} Angelo Ortiz Vega</p>
         <div class="footer-links">
+          <ThemeToggle />
           <a href="https://www.angelortizv.me" target="_blank" rel="noopener">angelortizv.me</a>
           <a href="https://github.com/angelortizv" target="_blank" rel="noopener">GitHub</a>
           <a href="/rss.xml">RSS</a>
