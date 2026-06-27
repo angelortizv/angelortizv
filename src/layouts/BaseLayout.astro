@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import SearchModal from '../components/SearchModal.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import SiteMark from '../components/SiteMark.astro';
 
 const DEFAULT_DESCRIPTION =
   'Angelo Ortiz Vega — escritura sobre tecnología, ideas y cosas que vale la pena recordar.';
@@ -106,7 +107,10 @@ const siteName = 'Angelo Ortiz Vega';
       </main>
 
       <footer>
-        <p>© {new Date().getFullYear()} Angelo Ortiz Vega</p>
+        <div class="footer-brand">
+          <SiteMark />
+          <p>© {new Date().getFullYear()} Angelo Ortiz Vega</p>
+        </div>
         <div class="footer-links">
           <ThemeToggle />
           <a href="https://www.angelortizv.me" target="_blank" rel="noopener">angelortizv.me</a>

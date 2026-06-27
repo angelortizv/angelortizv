@@ -5,6 +5,7 @@ import { getCollection } from 'astro:content';
 import { SERIES_META, type SeriesSlug } from '../../data/series';
 import { getSeriesPosts } from '../../utils/series';
 import { getReadingTime } from '../../utils/readingTime';
+import { getContentType } from '../../utils/contentType';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -43,6 +44,7 @@ const meta = SERIES_META[slug];
         description={post.data.description}
         tags={post.data.tags}
         readingTime={getReadingTime(post.body)}
+        contentType={getContentType(post.data.tags)}
       />
     ))}
   </ul>

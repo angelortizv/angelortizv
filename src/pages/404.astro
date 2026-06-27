@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import PostListItem from '../components/PostListItem.astro';
 import { getReadingTime } from '../utils/readingTime';
+import { getContentType } from '../utils/contentType';
 
 const allPosts = await getCollection('posts', ({ data }) => !data.draft);
 const recent = allPosts
@@ -38,6 +39,7 @@ const recent = allPosts
             description={post.data.description}
             tags={post.data.tags}
             readingTime={getReadingTime(post.body)}
+            contentType={getContentType(post.data.tags)}
           />
         ))}
       </ul>

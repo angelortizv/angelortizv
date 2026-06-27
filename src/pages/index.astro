@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import PostListItem from '../components/PostListItem.astro';
 import { getReadingTime } from '../utils/readingTime';
+import { getContentType } from '../utils/contentType';
 
 const allPosts = await getCollection('posts', ({ data }) => !data.draft);
 const recent = allPosts
@@ -13,7 +14,6 @@ const recent = allPosts
 <BaseLayout title="Angelo Ortiz Vega" description="Blog personal de Angelo Ortiz Vega. Escribo sobre tecnología, ideas, notas de libros y cosas que vale la pena recordar.">
   <section class="home-hero">
     <div class="home-hero-accent" aria-hidden="true"></div>
-    <p class="home-hero-tagline">Blog personal</p>
     <h1>Angelo Ortiz Vega</h1>
     <p>
       Costarricense. Construyo software, enseño y pienso en voz alta por escrito.
@@ -33,6 +33,7 @@ const recent = allPosts
             description={post.data.description}
             tags={post.data.tags}
             readingTime={getReadingTime(post.body)}
+            contentType={getContentType(post.data.tags)}
           />
         ))}
       </ul>
