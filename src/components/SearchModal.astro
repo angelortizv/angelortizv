@@ -9,10 +9,9 @@
   </div>
 </div>
 
-<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
-
 <script>
   let pagefindReady = false;
+  let pagefindCssLoaded = false;
   let lastTrigger: HTMLElement | null = null;
 
   const FOCUSABLE =
@@ -54,8 +53,25 @@
     }
   }
 
+  function loadPagefindCss() {
+    if (pagefindCssLoaded) return;
+    if (document.querySelector('link[data-pagefind-css]')) {
+      pagefindCssLoaded = true;
+      return;
+    }
+
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '/pagefind/pagefind-ui.css';
+    link.setAttribute('data-pagefind-css', '');
+    document.head.appendChild(link);
+    pagefindCssLoaded = true;
+  }
+
   async function loadPagefind() {
     if (pagefindReady) return;
+
+    loadPagefindCss();
 
     await new Promise<void>((resolve, reject) => {
       const script = document.createElement('script');

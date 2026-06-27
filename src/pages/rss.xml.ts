@@ -7,7 +7,7 @@ export async function GET(context: APIContext) {
 
   return rss({
     title: 'Angelo Ortiz Vega',
-    description: 'Writing on technology, ideas, and things worth remembering.',
+    description: 'Escritura sobre tecnología, ideas y cosas que vale la pena recordar.',
     site: context.site ?? 'https://angelortizv.com',
     items: posts
       .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())

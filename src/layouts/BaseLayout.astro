@@ -1,8 +1,10 @@
 ---
 import '../styles/global.css';
-import 'katex/dist/katex.min.css';
 import SearchModal from '../components/SearchModal.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
+
+const DEFAULT_DESCRIPTION =
+  'Angelo Ortiz Vega — escritura sobre tecnología, ideas y cosas que vale la pena recordar.';
 
 interface Props {
   title: string;
@@ -16,7 +18,7 @@ interface Props {
 
 const {
   title,
-  description = 'Angelo Ortiz Vega — writing on technology, ideas, and things worth remembering.',
+  description = DEFAULT_DESCRIPTION,
   ogType = 'website',
   ogUrl,
   ogImage,
@@ -62,6 +64,7 @@ const siteName = 'Angelo Ortiz Vega';
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="es_CR" />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
