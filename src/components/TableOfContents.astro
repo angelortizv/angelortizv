@@ -1,0 +1,99 @@
+---
+import type { Heading } from '../utils/extractHeadings';
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+---
+
+<nav class="toc" aria-label="Tabla de contenidos">
+  <details class="toc-details">
+    <summary class="toc-summary">
+      <span class="toc-summary-label">En este artículo</span>
+      <span class="toc-summary-active" aria-live="polite"></span>
+    </summary>
+    <ol class="toc-list">
+      {headings.map(heading => (
+        <li
+          class:list={['toc-item', heading.depth === 3 && 'toc-item--nested']}
+          data-slug={heading.slug}
+        >
+          <a href={`#${heading.slug}`}>{heading.text}</a>
+        </li>
+      ))}
+    </ol>
+  </details>
+</nav>
+
+<script>
+  function initTocSpy() {
+    const toc = document.querySelector('.toc');
+    if (!toc || toc.dataset.spyInit) return;
+    toc.dataset.spyInit = 'true';
+
+    const links = [...toc.querySelectorAll<HTMLAnchorElement>('.toc-item a')];
+    const slugs = links
+      .map(a => a.getAttribute('href')?.slice(1))
+      .filter((id): id is string => Boolean(id));
+
+    const headings = slugs
+      .map(id => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const activeLabel = toc.querySelector<HTMLElement>('.toc-summary-active');
+    if (!headings.length) return;
+
+    const setActive = (id: string) => {
+      links.forEach(a => {
+        const li = a.closest('.toc-item');
+        const isActive = a.getAttribute('href') === `#${id}`;
+        a.classList.toggle('is-active', isActive);
+        li?.classList.toggle('is-active', isActive);
+      });
+
+      const match = headings.find(h => h.id === id);
+      if (activeLabel) {
+        const text = match?.textContent?.trim() ?? '';
+        activeLabel.textContent = text ? `· ${text}` : '';
+      }
+    };
+
+    const update = () => {
+      const offset = window.innerWidth >= 1200 ? 32 : 80;
+      let current = headings[0].id;
+
+      for (const heading of headings) {
+        if (heading.getBoundingClientRect().top <= offset) {
+          current = heading.id;
+        }
+      }
+
+      setActive(current);
+    };
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        update();
+        ticking = false;
+      });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    update();
+
+    links.forEach(a => {
+      a.addEventListener('click', () => {
+        const id = a.getAttribute('href')?.slice(1);
+        if (id) setActive(id);
+      });
+    });
+  }
+
+  initTocSpy();
+  document.addEventListener('astro:page-load', initTocSpy);
+</script>

@@ -1,6 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import PostLayout from '../../layouts/PostLayout.astro';
+import PostNav from '../../components/PostNav.astro';
+import { formatDate } from '../../utils/formatDate';
+import { extractHeadings } from '../../utils/extractHeadings';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -15,6 +18,12 @@ const { Content } = await post.render();
 
 const words = post.body.split(/\s+/).filter(Boolean).length;
 const readingTime = Math.max(1, Math.round(words / 200));
+const headings = extractHeadings(post.body);
+
+const sorted = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const currentIndex = sorted.findIndex(p => p.slug === post.slug);
+const older = currentIndex < sorted.length - 1 ? sorted[currentIndex + 1] : null;
+const newer = currentIndex > 0 ? sorted[currentIndex - 1] : null;
 
 const related = allPosts
   .filter(p => p.slug !== post.slug && p.data.tags.some(t => post.data.tags.includes(t)))
@@ -24,14 +33,6 @@ const related = allPosts
     return sharedB - sharedA || b.data.date.valueOf() - a.data.date.valueOf();
   })
   .slice(0, 3);
-
-function formatDate(date: Date) {
-  return new Intl.DateTimeFormat('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: '2-digit',
-  }).format(date);
-}
 ---
 
 <PostLayout
@@ -41,18 +42,24 @@ function formatDate(date: Date) {
   tags={post.data.tags}
   slug={post.slug}
   readingTime={readingTime}
+  headings={headings}
 >
   <Content />
 
   {readingTime >= 4 && (
-    <div style="margin-top:3rem;text-align:right;">
-      <a href="#top" style="font-size:0.8125rem;color:var(--text-muted);font-family:var(--font-mono);">↑ Volver arriba</a>
+    <div class="back-to-top">
+      <a href="#top">↑ Volver arriba</a>
     </div>
   )}
 
+  <PostNav
+    older={older ? { slug: older.slug, title: older.data.title } : null}
+    newer={newer ? { slug: newer.slug, title: newer.data.title } : null}
+  />
+
   {related.length > 0 && (
-    <aside style="margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border);">
-      <p class="home-section-title" style="margin-bottom:0;">También puede interesarte</p>
+    <aside class="related-posts">
+      <p class="home-section-title">También puede interesarte</p>
       <ul class="post-list">
         {related.map(p => (
           <li class="post-item">

@@ -1,0 +1,34 @@
+---
+interface PostLink {
+  slug: string;
+  title: string;
+}
+
+interface Props {
+  older: PostLink | null;
+  newer: PostLink | null;
+}
+
+const { older, newer } = Astro.props;
+---
+
+{(older || newer) && (
+  <nav class="post-nav" aria-label="Navegación entre posts">
+    {older ? (
+      <a class="post-nav-link post-nav-link--prev" href={`/writing/${older.slug}`}>
+        <span class="post-nav-label">← Anterior</span>
+        <span class="post-nav-title">{older.title}</span>
+      </a>
+    ) : (
+      <span />
+    )}
+    {newer ? (
+      <a class="post-nav-link post-nav-link--next" href={`/writing/${newer.slug}`}>
+        <span class="post-nav-label">Siguiente →</span>
+        <span class="post-nav-title">{newer.title}</span>
+      </a>
+    ) : (
+      <span />
+    )}
+  </nav>
+)}

@@ -1,5 +1,8 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import { formatDate } from '../utils/formatDate';
+import type { Heading } from '../utils/extractHeadings';
 
 interface Props {
   title: string;
@@ -8,17 +11,15 @@ interface Props {
   tags?: string[];
   slug?: string;
   readingTime?: number;
+  headings?: Heading[];
 }
 
-const { title, date, description, tags = [], slug, readingTime } = Astro.props;
+const { title, date, description, tags = [], slug, readingTime, headings = [] } = Astro.props;
 
-const formatted = new Intl.DateTimeFormat('en-US', {
-  year: 'numeric',
-  month: 'short',
-  day: '2-digit',
-}).format(date);
-
+const formatted = formatDate(date);
 const canonicalUrl = slug ? new URL(`/writing/${slug}/`, Astro.site).href : undefined;
+const ogImage = slug ? `/og/${slug}` : undefined;
+const showToc = readingTime !== undefined && readingTime >= 6 && headings.length > 0;
 ---
 
 <BaseLayout
@@ -26,6 +27,7 @@ const canonicalUrl = slug ? new URL(`/writing/${slug}/`, Astro.site).href : unde
   description={description}
   ogType="article"
   ogUrl={canonicalUrl}
+  ogImage={ogImage}
   publishedTime={date.toISOString()}
 >
   <a href="/writing" class="back-link">← Escritura</a>
@@ -46,8 +48,43 @@ const canonicalUrl = slug ? new URL(`/writing/${slug}/`, Astro.site).href : unde
       </div>
     </header>
 
+    {showToc && <TableOfContents headings={headings} />}
+
     <div class="prose">
       <slot />
     </div>
   </article>
+
+  <script>
+    function initCopyButtons() {
+      document.querySelectorAll('.prose pre').forEach(pre => {
+        if (pre.querySelector('.copy-code-btn')) return;
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'copy-code-btn';
+        btn.textContent = 'Copiar';
+        btn.setAttribute('aria-label', 'Copiar código');
+
+        btn.addEventListener('click', async () => {
+          const code = pre.querySelector('code');
+          const text = code?.textContent ?? pre.textContent ?? '';
+
+          try {
+            await navigator.clipboard.writeText(text);
+            btn.textContent = '¡Copiado!';
+            setTimeout(() => { btn.textContent = 'Copiar'; }, 2000);
+          } catch {
+            btn.textContent = 'Error';
+            setTimeout(() => { btn.textContent = 'Copiar'; }, 2000);
+          }
+        });
+
+        pre.appendChild(btn);
+      });
+    }
+
+    initCopyButtons();
+    document.addEventListener('astro:page-load', initCopyButtons);
+  </script>
 </BaseLayout>

@@ -1,11 +1,13 @@
 ---
 import '../styles/global.css';
+import 'katex/dist/katex.min.css';
 
 interface Props {
   title: string;
   description?: string;
   ogType?: 'website' | 'article';
   ogUrl?: string;
+  ogImage?: string;
   publishedTime?: string;
 }
 
@@ -14,11 +16,15 @@ const {
   description = 'Angelo Ortiz Vega — writing on technology, ideas, and things worth remembering.',
   ogType = 'website',
   ogUrl,
+  ogImage,
   publishedTime,
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
 const canonicalUrl = ogUrl ?? new URL(currentPath, Astro.site).href;
+const ogImageUrl = ogImage
+  ? new URL(ogImage, Astro.site).href
+  : new URL('/og/default', Astro.site).href;
 const siteName = 'Angelo Ortiz Vega';
 ---
 
@@ -37,6 +43,9 @@ const siteName = 'Angelo Ortiz Vega';
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content={siteName} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     {publishedTime && <meta property="article:published_time" content={publishedTime} />}
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

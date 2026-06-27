@@ -25,6 +25,7 @@
 html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -212,6 +213,7 @@ a.tag:hover {
   font-weight: 600;
   line-height: 1.3;
   margin: 2.5rem 0 1rem;
+  scroll-margin-top: 5rem;
 }
 
 .prose h1 { font-size: 1.5rem; }
@@ -257,14 +259,58 @@ a.tag:hover {
 }
 
 .prose pre {
+  position: relative;
   background: var(--bg-subtle) !important;
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 1.25rem 1.5rem;
+  padding-top: 2.25rem;
   overflow-x: auto;
   margin: 1.5rem 0;
   font-size: 0.875rem;
   line-height: 1.7;
+  scrollbar-width: thin;
+  scrollbar-color: #333333 transparent;
+}
+
+.prose pre::-webkit-scrollbar {
+  height: 5px;
+}
+
+.prose pre::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 0 0.25rem 0.25rem;
+}
+
+.prose pre::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 3px;
+}
+
+.prose pre::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+.copy-code-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.copy-code-btn:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
 }
 
 .prose pre code {
@@ -289,6 +335,25 @@ a.tag:hover {
   margin: 1.5rem 0;
   display: block;
   overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #333333 transparent;
+}
+
+.prose table::-webkit-scrollbar {
+  height: 5px;
+}
+
+.prose table::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.prose table::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 3px;
+}
+
+.prose table::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
 }
 
 .prose th {
@@ -427,6 +492,220 @@ a.tag:hover {
 
 .skip-link:focus { top: 0; }
 
+/* ─── Table of contents ─── */
+
+.toc {
+  margin-bottom: 2rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  position: sticky;
+  top: 1rem;
+  z-index: 20;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.toc-details {
+  display: block;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.toc-summary {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.toc-summary::-webkit-details-marker { display: none; }
+
+.toc-summary::marker { content: ''; }
+
+.toc-summary-label {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.toc-summary-active {
+  flex: 1;
+  font-size: 0.8125rem;
+  color: var(--accent);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.toc-summary::after {
+  content: '▾';
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  transition: transform 0.15s;
+}
+
+.toc-details[open] .toc-summary::after {
+  transform: rotate(180deg);
+}
+
+.toc-details[open] .toc-summary-active {
+  display: none;
+}
+
+.toc-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0 1rem 0.875rem;
+  margin: 0;
+  max-height: 50vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #333333 transparent;
+}
+
+.toc-list::-webkit-scrollbar { width: 4px; }
+.toc-list::-webkit-scrollbar-thumb { background: #333333; border-radius: 2px; }
+
+.toc-item {
+  min-width: 0;
+}
+
+.toc-item a {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+  line-height: 1.45;
+  border-left: 2px solid transparent;
+  padding-left: 0.5rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.toc-item a:hover { color: var(--accent); }
+
+.toc-item a.is-active,
+.toc-item.is-active > a {
+  color: var(--text);
+  border-left-color: var(--accent);
+}
+
+.toc-item--nested { padding-left: 0.75rem; }
+
+.toc-item--nested a { font-size: 0.8125rem; }
+
+@media (min-width: 1200px) {
+  .toc {
+    position: fixed;
+    top: 2rem;
+    left: max(1.5rem, calc((100vw - 680px) / 2 - 15.5rem));
+    width: 13.5rem;
+    margin-bottom: 0;
+    z-index: 30;
+  }
+
+  .toc-list {
+    max-height: calc(100vh - 6rem);
+  }
+
+  .prose h2,
+  .prose h3,
+  .prose h4 {
+    scroll-margin-top: 2rem;
+  }
+}
+
+/* ─── Post navigation ─── */
+
+.post-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.post-nav-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.post-nav-link--next {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.post-nav-label {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.post-nav-title {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  transition: color 0.15s;
+}
+
+.post-nav-link:hover .post-nav-title { color: var(--text); }
+
+/* ─── Post extras ─── */
+
+.back-to-top {
+  margin-top: 3rem;
+  text-align: right;
+}
+
+.back-to-top a {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  transition: color 0.15s;
+}
+
+.back-to-top a:hover { color: var(--text); }
+
+.related-posts {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.related-posts .home-section-title { margin-bottom: 0; }
+
+/* ─── KaTeX ─── */
+
+.katex { color: #e5e5e5; font-size: 1.05em; }
+
+.prose .katex-display {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
 /* ─── Utilities ─── */
 
 .sr-only {
@@ -465,9 +744,21 @@ a.tag:hover {
 
   .article-header h1 { font-size: 1.125rem; }
   .page-header h1 { font-size: 1rem; }
+
+  .post-nav {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .post-nav-link--next {
+    text-align: left;
+    align-items: flex-start;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
   *, *::before, *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;

@@ -1,19 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { formatDate } from '../utils/formatDate';
 
 const allPosts = await getCollection('posts', ({ data }) => !data.draft);
 const recent = allPosts
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 5);
-
-function formatDate(date: Date) {
-  return new Intl.DateTimeFormat('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: '2-digit',
-  }).format(date);
-}
 ---
 
 <BaseLayout title="Angelo Ortiz Vega" description="Blog personal de Angelo Ortiz Vega. Escribo sobre tecnología, ideas, notas de libros y cosas que vale la pena recordar.">
