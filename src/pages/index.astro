@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('posts', ({ data }) => !data.draft);
+const recent = allPosts
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 5);
+
+function formatDate(date: Date) {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: '2-digit',
+  }).format(date);
+}
+---
+
+<BaseLayout title="Angelo Ortiz Vega">
+  <section class="home-hero">
+    <h1>Angelo Ortiz Vega</h1>
+    <p>
+      Costarricense. Construyo software, enseño y pienso en voz alta por escrito.
+      Esto último es lo que pasa aquí.
+    </p>
+  </section>
+
+  {recent.length > 0 && (
+    <section>
+      <p class="home-section-title">Recent writing</p>
+      <ul class="post-list">
+        {recent.map(post => (
+          <li class="post-item">
+            <time class="post-date" datetime={post.data.date.toISOString()}>
+              {formatDate(post.data.date)}
+            </time>
+            <a class="post-title-link" href={`/writing/${post.slug}`}>
+              {post.data.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <p style="margin-top:1.5rem;">
+        <a href="/writing" style="font-size:0.875rem;color:var(--accent);">All posts →</a>
+      </p>
+    </section>
+  )}
+</BaseLayout>

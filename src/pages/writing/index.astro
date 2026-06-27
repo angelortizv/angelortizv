@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('posts', ({ data }) => !data.draft);
+const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+function formatDate(date: Date) {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: '2-digit',
+  }).format(date);
+}
+
+const years = [...new Set(posts.map(p => p.data.date.getFullYear()))];
+---
+
+<BaseLayout title="Writing — Angelo Ortiz" description="Todos los artículos, notas y ensayos.">
+  <div class="page-header">
+    <h1>Writing</h1>
+    <p>Artículos técnicos, notas de libros, ideas y experiencias.</p>
+  </div>
+
+  {years.map(year => (
+    <section style="margin-bottom:2.5rem;">
+      <p class="home-section-title" style="margin-bottom:0;">{year}</p>
+      <ul class="post-list">
+        {posts
+          .filter(p => p.data.date.getFullYear() === year)
+          .map(post => (
+            <li class="post-item">
+              <time class="post-date" datetime={post.data.date.toISOString()}>
+                {formatDate(post.data.date)}
+              </time>
+              <div>
+                <a class="post-title-link" href={`/writing/${post.slug}`}>
+                  {post.data.title}
+                </a>
+                {post.data.tags.length > 0 && (
+                  <div class="tags">
+                    {post.data.tags.map(tag => <span class="tag">{tag}</span>)}
+                  </div>
+                )}
+              </div>
+            </li>
+          ))}
+      </ul>
+    </section>
+  ))}
+</BaseLayout>

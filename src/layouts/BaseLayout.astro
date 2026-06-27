@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Angelo Ortiz Vega — writing on technology, ideas, and things worth remembering.' } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="Angelo Ortiz Vega" href="/rss.xml" />
+  </head>
+  <body>
+    <div class="site-wrapper">
+      <header>
+        <div class="inner">
+          <a href="/" class="site-name">Angelo Ortiz</a>
+          <nav aria-label="Navegación principal">
+            <a href="/writing" aria-current={currentPath.startsWith('/writing') ? 'page' : undefined}>Writing</a>
+            <a href="/about" aria-current={currentPath === '/about' ? 'page' : undefined}>About</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <slot />
+      </main>
+
+      <footer>
+        <p>© {new Date().getFullYear()} Angelo Ortiz Vega</p>
+        <a href="/rss.xml">RSS</a>
+      </footer>
+    </div>
+  </body>
+</html>
