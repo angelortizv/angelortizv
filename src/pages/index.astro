@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import { formatDate } from '../utils/formatDate';
+import PostListItem from '../components/PostListItem.astro';
+import { getReadingTime } from '../utils/readingTime';
 
 const allPosts = await getCollection('posts', ({ data }) => !data.draft);
 const recent = allPosts
@@ -11,6 +12,8 @@ const recent = allPosts
 
 <BaseLayout title="Angelo Ortiz Vega" description="Blog personal de Angelo Ortiz Vega. Escribo sobre tecnología, ideas, notas de libros y cosas que vale la pena recordar.">
   <section class="home-hero">
+    <div class="home-hero-accent" aria-hidden="true"></div>
+    <p class="home-hero-tagline">Blog personal</p>
     <h1>Angelo Ortiz Vega</h1>
     <p>
       Costarricense. Construyo software, enseño y pienso en voz alta por escrito.
@@ -23,19 +26,19 @@ const recent = allPosts
       <p class="home-section-title">Escritura reciente</p>
       <ul class="post-list">
         {recent.map(post => (
-          <li class="post-item">
-            <time class="post-date" datetime={post.data.date.toISOString()}>
-              {formatDate(post.data.date)}
-            </time>
-            <a class="post-title-link" href={`/writing/${post.slug}`}>
-              {post.data.title}
-            </a>
-          </li>
+          <PostListItem
+            slug={post.slug}
+            title={post.data.title}
+            date={post.data.date}
+            description={post.data.description}
+            tags={post.data.tags}
+            readingTime={getReadingTime(post.body)}
+          />
         ))}
       </ul>
 
-      <p style="margin-top:1.5rem;">
-        <a href="/writing" style="font-size:0.875rem;color:var(--accent);">Ver todo →</a>
+      <p class="section-cta">
+        <a href="/writing" class="link-accent">Ver todo →</a>
       </p>
     </section>
   )}

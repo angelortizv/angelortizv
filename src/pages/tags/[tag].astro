@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import { formatDate } from '../../utils/formatDate';
+import PostListItem from '../../components/PostListItem.astro';
+import { getReadingTime } from '../../utils/readingTime';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -25,24 +26,24 @@ const { posts } = Astro.props;
   description={`Todos los posts etiquetados con ${tag}.`}
 >
   <div class="page-header">
-    <h1><span class="tag" style="font-size:0.875rem;">#{tag}</span></h1>
+    <h1><span class="tag tag--lg">#{tag}</span></h1>
     <p>{posts.length} {posts.length === 1 ? 'post' : 'posts'}</p>
   </div>
 
   <ul class="post-list">
     {posts.map(post => (
-      <li class="post-item">
-        <time class="post-date" datetime={post.data.date.toISOString()}>
-          {formatDate(post.data.date)}
-        </time>
-        <a class="post-title-link" href={`/writing/${post.slug}`}>
-          {post.data.title}
-        </a>
-      </li>
+      <PostListItem
+        slug={post.slug}
+        title={post.data.title}
+        date={post.data.date}
+        description={post.data.description}
+        tags={post.data.tags}
+        readingTime={getReadingTime(post.body)}
+      />
     ))}
   </ul>
 
-  <p style="margin-top:2rem;">
-    <a href="/writing" style="font-size:0.875rem;color:var(--text-muted);">← Escritura</a>
+  <p class="section-cta">
+    <a href="/writing" class="link-muted">← Escritura</a>
   </p>
 </BaseLayout>

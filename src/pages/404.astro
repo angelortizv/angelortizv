@@ -3,12 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="404 — Angelo Ortiz">
-  <div style="padding: 4rem 0; text-align: center;">
-    <p style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--accent); margin-bottom: 1rem;">404</p>
-    <h1 style="font-size: 1.125rem; font-weight: 500; margin-bottom: 0.75rem;">Página no encontrada</h1>
-    <p style="color: var(--text-muted); font-size: 0.9375rem; margin-bottom: 2rem;">
+  <div class="error-page">
+    <p class="error-code">404</p>
+    <h1>Página no encontrada</h1>
+    <p class="error-message">
       Esta página no existe o fue movida.
     </p>
-    <a href="/" style="font-size: 0.875rem; color: var(--accent);">← Volver al inicio</a>
+    <a href="/" class="link-accent">← Volver al inicio</a>
   </div>
 </BaseLayout>

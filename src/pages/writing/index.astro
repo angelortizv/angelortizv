@@ -1,12 +1,20 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import { formatDate } from '../../utils/formatDate';
+import PostListItem from '../../components/PostListItem.astro';
+import { getContentType, CONTENT_TYPE_LABELS } from '../../utils/contentType';
+import { getReadingTime } from '../../utils/readingTime';
 
 const allPosts = await getCollection('posts', ({ data }) => !data.draft);
 const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-
 const years = [...new Set(posts.map(p => p.data.date.getFullYear()))];
+const POSTS_PER_PAGE = 10;
+const filterKeys = [
+  { key: 'all', label: CONTENT_TYPE_LABELS.all },
+  { key: 'personal', label: CONTENT_TYPE_LABELS.personal },
+  { key: 'tech', label: CONTENT_TYPE_LABELS.tech },
+  { key: 'notas', label: CONTENT_TYPE_LABELS.notas },
+];
 ---
 
 <BaseLayout title="Escritura — Angelo Ortiz" description="Todos los artículos, notas y ensayos.">
@@ -15,30 +23,103 @@ const years = [...new Set(posts.map(p => p.data.date.getFullYear()))];
     <p>Artículos técnicos, notas de libros, ideas y experiencias.</p>
   </div>
 
+  <div class="content-filter" role="group" aria-label="Filtrar por tipo">
+    {filterKeys.map(({ key, label }) => (
+      <button
+        type="button"
+        class="filter-btn"
+        data-filter={key}
+        aria-pressed={key === 'all' ? 'true' : 'false'}
+      >
+        {label}
+      </button>
+    ))}
+  </div>
+
   {years.map(year => (
-    <section style="margin-bottom:2.5rem;">
-      <p class="home-section-title" style="margin-bottom:0;">{year}</p>
+    <section class="year-section" data-year={year}>
+      <p class="home-section-title year-label">{year}</p>
       <ul class="post-list">
         {posts
           .filter(p => p.data.date.getFullYear() === year)
           .map(post => (
-            <li class="post-item">
-              <time class="post-date" datetime={post.data.date.toISOString()}>
-                {formatDate(post.data.date)}
-              </time>
-              <div>
-                <a class="post-title-link" href={`/writing/${post.slug}`}>
-                  {post.data.title}
-                </a>
-                {post.data.tags.length > 0 && (
-                  <div class="tags">
-                    {post.data.tags.map(tag => <a class="tag" href={`/tags/${tag}`}>{tag}</a>)}
-                  </div>
-                )}
-              </div>
-            </li>
+            <PostListItem
+              slug={post.slug}
+              title={post.data.title}
+              date={post.data.date}
+              description={post.data.description}
+              tags={post.data.tags}
+              readingTime={getReadingTime(post.body)}
+              contentType={getContentType(post.data.tags)}
+              index={posts.indexOf(post)}
+            />
           ))}
       </ul>
     </section>
   ))}
+
+  <button type="button" class="load-more-btn" id="load-more" hidden>
+    Cargar más
+  </button>
 </BaseLayout>
+
+<script define:vars={{ POSTS_PER_PAGE }}>
+  function initWritingList() {
+    const items = [...document.querySelectorAll('.post-item')];
+    const sections = [...document.querySelectorAll('.year-section')];
+    const loadMoreBtn = document.getElementById('load-more');
+    const filterBtns = [...document.querySelectorAll('.filter-btn')];
+
+    if (!items.length || !loadMoreBtn) return;
+
+    let activeFilter = 'all';
+    let visibleLimit = POSTS_PER_PAGE;
+
+    function getVisibleItems() {
+      return items.filter(item => {
+        const type = item.dataset.contentType;
+        return activeFilter === 'all' || type === activeFilter;
+      });
+    }
+
+    function updateView() {
+      const matching = getVisibleItems();
+
+      items.forEach(item => item.classList.add('post-item--hidden'));
+
+      matching.slice(0, visibleLimit).forEach(item => {
+        item.classList.remove('post-item--hidden');
+      });
+
+      sections.forEach(section => {
+        const visibleInSection = section.querySelectorAll('.post-item:not(.post-item--hidden)');
+        section.classList.toggle('year-section--hidden', visibleInSection.length === 0);
+      });
+
+      loadMoreBtn.hidden = visibleLimit >= matching.length;
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeFilter = btn.dataset.filter ?? 'all';
+        visibleLimit = POSTS_PER_PAGE;
+
+        filterBtns.forEach(b => {
+          b.setAttribute('aria-pressed', String(b === btn));
+        });
+
+        updateView();
+      });
+    });
+
+    loadMoreBtn.addEventListener('click', () => {
+      visibleLimit += POSTS_PER_PAGE;
+      updateView();
+    });
+
+    updateView();
+  }
+
+  initWritingList();
+  document.addEventListener('astro:page-load', initWritingList);
+</script>

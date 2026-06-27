@@ -1,0 +1,51 @@
+---
+import { formatDate } from '../utils/formatDate';
+
+interface Props {
+  slug: string;
+  title: string;
+  date: Date;
+  description?: string;
+  tags?: string[];
+  readingTime?: number;
+  contentType?: string;
+  index?: number;
+}
+
+const {
+  slug,
+  title,
+  date,
+  description,
+  tags = [],
+  readingTime,
+  contentType,
+  index,
+} = Astro.props;
+---
+
+<li
+  class="post-item"
+  data-content-type={contentType}
+  data-index={index}
+>
+  <time class="post-date" datetime={date.toISOString()}>
+    {formatDate(date)}
+  </time>
+  <div class="post-item-body">
+    <a class="post-title-link" href={`/writing/${slug}`}>{title}</a>
+    {description && <p class="post-excerpt">{description}</p>}
+    {(readingTime || tags.length > 0) && (
+      <div class="post-item-meta">
+        {readingTime && (
+          <span class="reading-time">{readingTime} min</span>
+        )}
+        {tags.length > 0 && (
+          <div class="tags">
+            {tags.map(tag => <a class="tag" href={`/tags/${tag}`}>{tag}</a>)}
+          </div>
+        )}
+      </div>
+    )}
+  </div>
+</li>

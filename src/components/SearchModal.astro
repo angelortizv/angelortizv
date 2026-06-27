@@ -1,0 +1,104 @@
+<div id="search-modal" class="search-modal" role="dialog" aria-modal="true" aria-label="Buscar" hidden>
+  <div class="search-modal-backdrop" data-search-close></div>
+  <div class="search-modal-panel">
+    <div class="search-modal-header">
+      <span class="search-modal-title">Buscar</span>
+      <kbd class="search-kbd">Esc</kbd>
+    </div>
+    <div id="search-modal-ui"></div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+
+<script>
+  let pagefindReady = false;
+
+  function getModal() {
+    return document.getElementById('search-modal');
+  }
+
+  async function loadPagefind() {
+    if (pagefindReady) return;
+
+    await new Promise<void>((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = '/pagefind/pagefind-ui.js';
+      script.onload = () => resolve();
+      script.onerror = () => reject(new Error('Pagefind no disponible'));
+      document.head.appendChild(script);
+    });
+
+    // @ts-expect-error PagefindUI is injected by pagefind-ui.js
+    new PagefindUI({
+      element: '#search-modal-ui',
+      showSubResults: false,
+      resetStyles: true,
+      translations: {
+        placeholder: 'Buscar posts...',
+        zero_results: 'No se encontraron resultados para [SEARCH_TERM].',
+      },
+    });
+
+    pagefindReady = true;
+  }
+
+  async function openSearch() {
+    const modal = getModal();
+    if (!modal) return;
+
+    try {
+      await loadPagefind();
+    } catch {
+      window.location.href = '/buscar';
+      return;
+    }
+
+    modal.hidden = false;
+    document.body.classList.add('search-open');
+
+    const input = modal.querySelector<HTMLInputElement>('input');
+    input?.focus();
+  }
+
+  function closeSearch() {
+    const modal = getModal();
+    if (!modal) return;
+
+    modal.hidden = true;
+    document.body.classList.remove('search-open');
+  }
+
+  function initSearchModal() {
+    if (document.body.dataset.searchInit) return;
+    document.body.dataset.searchInit = 'true';
+
+    document.querySelectorAll('[data-search-open]').forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        openSearch();
+      });
+    });
+
+    getModal()?.querySelectorAll('[data-search-close]').forEach(el => {
+      el.addEventListener('click', closeSearch);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        const modal = getModal();
+        if (modal?.hidden) openSearch();
+        else closeSearch();
+        return;
+      }
+
+      if (e.key === 'Escape' && !getModal()?.hidden) {
+        closeSearch();
+      }
+    });
+  }
+
+  initSearchModal();
+  document.addEventListener('astro:page-load', initSearchModal);
+</script>

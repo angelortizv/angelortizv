@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import 'katex/dist/katex.min.css';
+import SearchModal from '../components/SearchModal.astro';
 
 interface Props {
   title: string;
@@ -48,6 +49,12 @@ const siteName = 'Angelo Ortiz Vega';
     <meta property="og:image:height" content="630" />
     {publishedTime && <meta property="article:published_time" content={publishedTime} />}
 
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" type="application/rss+xml" title={siteName} href="/rss.xml" />
   </head>
@@ -61,7 +68,10 @@ const siteName = 'Angelo Ortiz Vega';
           <nav aria-label="Navegación principal">
             <a href="/writing" aria-current={currentPath.startsWith('/writing') ? 'page' : undefined}>Escritura</a>
             <a href="/tags" aria-current={currentPath.startsWith('/tags') ? 'page' : undefined}>Categorías</a>
-            <a href="/buscar" aria-current={currentPath === '/buscar' ? 'page' : undefined}>Buscar</a>
+            <button type="button" class="nav-search-btn" data-search-open aria-label="Buscar (Ctrl+K)">
+              Buscar
+              <kbd class="nav-kbd">⌘K</kbd>
+            </button>
             <a href="/about" aria-current={currentPath === '/about' ? 'page' : undefined}>Acerca de</a>
           </nav>
         </div>
@@ -73,11 +83,14 @@ const siteName = 'Angelo Ortiz Vega';
 
       <footer>
         <p>© {new Date().getFullYear()} Angelo Ortiz Vega</p>
-        <div style="display:flex;gap:1.25rem;">
+        <div class="footer-links">
+          <a href="https://www.angelortizv.me" target="_blank" rel="noopener">angelortizv.me</a>
           <a href="https://github.com/angelortizv" target="_blank" rel="noopener">GitHub</a>
           <a href="/rss.xml">RSS</a>
         </div>
       </footer>
     </div>
+
+    <SearchModal />
   </body>
 </html>

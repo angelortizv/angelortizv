@@ -4,6 +4,7 @@ import PostLayout from '../../layouts/PostLayout.astro';
 import PostNav from '../../components/PostNav.astro';
 import { formatDate } from '../../utils/formatDate';
 import { extractHeadings } from '../../utils/extractHeadings';
+import { getReadingTime } from '../../utils/readingTime';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -16,8 +17,7 @@ export async function getStaticPaths() {
 const { post, allPosts } = Astro.props;
 const { Content } = await post.render();
 
-const words = post.body.split(/\s+/).filter(Boolean).length;
-const readingTime = Math.max(1, Math.round(words / 200));
+const readingTime = getReadingTime(post.body);
 const headings = extractHeadings(post.body);
 
 const sorted = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
