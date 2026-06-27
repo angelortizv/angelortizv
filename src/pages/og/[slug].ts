@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { buildOgSvg } from '../../utils/ogImage';
+import { buildOgPng } from '../../utils/ogImage';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -23,12 +23,13 @@ export async function getStaticPaths() {
   ];
 }
 
-export const GET: APIRoute = ({ props }) => {
+export const GET: APIRoute = async ({ props }) => {
   const { title, subtitle } = props as { title: string; subtitle: string };
+  const png = await buildOgPng(title, subtitle);
 
-  return new Response(buildOgSvg(title, subtitle), {
+  return new Response(png, {
     headers: {
-      'Content-Type': 'image/svg+xml',
+      'Content-Type': 'image/png',
       'Cache-Control': 'public, max-age=31536000, immutable',
     },
   });

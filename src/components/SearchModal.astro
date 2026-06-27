@@ -1,5 +1,5 @@
 <div id="search-modal" class="search-modal" role="dialog" aria-modal="true" aria-label="Buscar" hidden>
-  <div class="search-modal-backdrop" data-search-close></div>
+  <div class="search-modal-backdrop" data-search-close tabindex="-1"></div>
   <div class="search-modal-panel">
     <div class="search-modal-header">
       <span class="search-modal-title">Buscar</span>
@@ -13,9 +13,45 @@
 
 <script>
   let pagefindReady = false;
+  let lastTrigger: HTMLElement | null = null;
+
+  const FOCUSABLE =
+    'a[href], button:not([disabled]), input:not([disabled]), textarea, select, [tabindex]:not([tabindex="-1"])';
 
   function getModal() {
     return document.getElementById('search-modal');
+  }
+
+  function getSiteWrapper() {
+    return document.querySelector<HTMLElement>('.site-wrapper');
+  }
+
+  function getFocusableElements(container: HTMLElement) {
+    return [...container.querySelectorAll<HTMLElement>(FOCUSABLE)].filter(
+      el => !el.closest('[hidden]') && el.offsetParent !== null,
+    );
+  }
+
+  function handleTabTrap(e: KeyboardEvent) {
+    const modal = getModal();
+    if (!modal || modal.hidden || e.key !== 'Tab') return;
+
+    const panel = modal.querySelector<HTMLElement>('.search-modal-panel');
+    if (!panel) return;
+
+    const focusables = getFocusableElements(panel);
+    if (focusables.length === 0) return;
+
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
   }
 
   async function loadPagefind() {
@@ -43,9 +79,11 @@
     pagefindReady = true;
   }
 
-  async function openSearch() {
+  async function openSearch(trigger?: HTMLElement) {
     const modal = getModal();
     if (!modal) return;
+
+    lastTrigger = trigger ?? (document.activeElement as HTMLElement | null);
 
     try {
       await loadPagefind();
@@ -56,6 +94,9 @@
 
     modal.hidden = false;
     document.body.classList.add('search-open');
+    getSiteWrapper()?.setAttribute('inert', '');
+
+    document.addEventListener('keydown', handleTabTrap);
 
     const input = modal.querySelector<HTMLInputElement>('input');
     input?.focus();
@@ -67,6 +108,11 @@
 
     modal.hidden = true;
     document.body.classList.remove('search-open');
+    getSiteWrapper()?.removeAttribute('inert');
+    document.removeEventListener('keydown', handleTabTrap);
+
+    lastTrigger?.focus();
+    lastTrigger = null;
   }
 
   function initSearchModal() {
@@ -76,7 +122,7 @@
     document.querySelectorAll('[data-search-open]').forEach(trigger => {
       trigger.addEventListener('click', (e) => {
         e.preventDefault();
-        openSearch();
+        openSearch(e.currentTarget as HTMLElement);
       });
     });
 
@@ -88,8 +134,12 @@
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
         const modal = getModal();
-        if (modal?.hidden) openSearch();
-        else closeSearch();
+        if (modal?.hidden) {
+          const trigger = document.querySelector<HTMLElement>('[data-search-open]');
+          openSearch(trigger ?? undefined);
+        } else {
+          closeSearch();
+        }
         return;
       }
 

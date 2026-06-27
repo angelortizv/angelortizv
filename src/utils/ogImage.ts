@@ -1,3 +1,5 @@
+import sharp from 'sharp';
+
 function escapeXml(text: string): string {
   return text
     .replace(/&/g, '&amp;')
@@ -51,4 +53,11 @@ export function buildOgSvg(title: string, subtitle = 'Angelo Ortiz Vega'): strin
   <line x1="80" y1="460" x2="240" y2="460" stroke="#262626" stroke-width="1"/>
   <text x="80" y="530" font-family="ui-monospace, monospace" font-size="20" letter-spacing="0.06em" fill="#e8813a">ANGELORTIZV.COM</text>
 </svg>`;
+}
+
+export async function buildOgPng(title: string, subtitle = 'Angelo Ortiz Vega'): Promise<Buffer> {
+  return sharp(Buffer.from(buildOgSvg(title, subtitle)))
+    .resize(1200, 630)
+    .png()
+    .toBuffer();
 }

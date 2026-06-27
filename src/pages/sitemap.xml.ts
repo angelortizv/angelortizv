@@ -34,7 +34,18 @@ export async function GET(context: APIContext) {
     lastmod: today,
   }));
 
-  const allUrls = [...staticUrls, ...seriesUrls, ...postUrls];
+  const tags = [...new Set(posts.flatMap(p => p.data.tags))];
+  const tagUrls = [
+    { url: new URL('/tags/', site).href, lastmod: today },
+    ...tags.map(tag => ({
+      url: new URL(`/tags/${tag}/`, site).href,
+      lastmod: today,
+    })),
+  ];
+
+  const buscarUrl = { url: new URL('/buscar/', site).href, lastmod: today };
+
+  const allUrls = [...staticUrls, ...seriesUrls, ...tagUrls, buscarUrl, ...postUrls];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
