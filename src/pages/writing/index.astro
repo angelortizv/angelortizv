@@ -39,7 +39,7 @@ const years = [...new Set(posts.map(p => p.data.date.getFullYear()))];
                 </a>
                 {post.data.tags.length > 0 && (
                   <div class="tags">
-                    {post.data.tags.map(tag => <span class="tag">{tag}</span>)}
+                    {post.data.tags.map(tag => <a class="tag" href={`/tags/${tag}`}>{tag}</a>)}
                   </div>
                 )}
               </div>

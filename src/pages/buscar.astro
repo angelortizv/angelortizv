@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Buscar — Angelo Ortiz" description="Busca en todos los posts del blog.">
+  <div class="page-header">
+    <h1>Buscar</h1>
+  </div>
+
+  <div id="search"></div>
+
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+  <script src="/pagefind/pagefind-ui.js" is:inline></script>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', () => {
+      new PagefindUI({
+        element: '#search',
+        showSubResults: false,
+        resetStyles: true,
+        translations: {
+          placeholder: 'Buscar posts...',
+          zero_results: 'No se encontraron resultados para [SEARCH_TERM].',
+        },
+      });
+    });
+  </script>
+
+  <style>
+    #search input {
+      width: 100%;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.625rem 0.875rem;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.9375rem;
+      outline: none;
+    }
+    #search input:focus {
+      border-color: var(--accent);
+    }
+    .pagefind-ui__result {
+      border-top: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+    .pagefind-ui__result-title a {
+      color: var(--text);
+      font-size: 0.9375rem;
+      text-decoration: none;
+    }
+    .pagefind-ui__result-title a:hover {
+      color: var(--accent);
+    }
+    .pagefind-ui__result-excerpt {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+    .pagefind-ui__message {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      padding: 1rem 0;
+    }
+    mark {
+      background: var(--accent-tint);
+      color: var(--accent);
+      border-radius: 2px;
+      padding: 0 2px;
+    }
+  </style>
+</BaseLayout>

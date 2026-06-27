@@ -6,15 +6,32 @@ export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
   return posts.map(post => ({
     params: { slug: post.slug },
-    props: { post },
+    props: { post, allPosts: posts },
   }));
 }
 
-const { post } = Astro.props;
+const { post, allPosts } = Astro.props;
 const { Content } = await post.render();
 
 const words = post.body.split(/\s+/).filter(Boolean).length;
 const readingTime = Math.max(1, Math.round(words / 200));
+
+const related = allPosts
+  .filter(p => p.slug !== post.slug && p.data.tags.some(t => post.data.tags.includes(t)))
+  .sort((a, b) => {
+    const sharedA = a.data.tags.filter(t => post.data.tags.includes(t)).length;
+    const sharedB = b.data.tags.filter(t => post.data.tags.includes(t)).length;
+    return sharedB - sharedA || b.data.date.valueOf() - a.data.date.valueOf();
+  })
+  .slice(0, 3);
+
+function formatDate(date: Date) {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: '2-digit',
+  }).format(date);
+}
 ---
 
 <PostLayout
@@ -26,4 +43,28 @@ const readingTime = Math.max(1, Math.round(words / 200));
   readingTime={readingTime}
 >
   <Content />
+
+  {readingTime >= 4 && (
+    <div style="margin-top:3rem;text-align:right;">
+      <a href="#top" style="font-size:0.8125rem;color:var(--text-muted);font-family:var(--font-mono);">↑ Volver arriba</a>
+    </div>
+  )}
+
+  {related.length > 0 && (
+    <aside style="margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border);">
+      <p class="home-section-title" style="margin-bottom:0;">También puede interesarte</p>
+      <ul class="post-list">
+        {related.map(p => (
+          <li class="post-item">
+            <time class="post-date" datetime={p.data.date.toISOString()}>
+              {formatDate(p.data.date)}
+            </time>
+            <a class="post-title-link" href={`/writing/${p.slug}`}>
+              {p.data.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </aside>
+  )}
 </PostLayout>

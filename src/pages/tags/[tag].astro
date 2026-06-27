@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  const tags = [...new Set(posts.flatMap(p => p.data.tags))];
+  return tags.map(tag => ({
+    params: { tag },
+    props: {
+      posts: posts
+        .filter(p => p.data.tags.includes(tag))
+        .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+    },
+  }));
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+
+function formatDate(date: Date) {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: '2-digit',
+  }).format(date);
+}
+---
+
+<BaseLayout
+  title={`#${tag} — Angelo Ortiz`}
+  description={`Todos los posts etiquetados con ${tag}.`}
+>
+  <div class="page-header">
+    <h1><span class="tag" style="font-size:0.875rem;">#{tag}</span></h1>
+    <p>{posts.length} {posts.length === 1 ? 'post' : 'posts'}</p>
+  </div>
+
+  <ul class="post-list">
+    {posts.map(post => (
+      <li class="post-item">
+        <time class="post-date" datetime={post.data.date.toISOString()}>
+          {formatDate(post.data.date)}
+        </time>
+        <a class="post-title-link" href={`/writing/${post.slug}`}>
+          {post.data.title}
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <p style="margin-top:2rem;">
+    <a href="/writing" style="font-size:0.875rem;color:var(--text-muted);">← Escritura</a>
+  </p>
+</BaseLayout>

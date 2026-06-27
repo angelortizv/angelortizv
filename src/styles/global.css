@@ -167,6 +167,12 @@ footer a:hover { color: var(--accent); }
   color: var(--accent);
   padding: 0.15rem 0.5rem;
   border-radius: 3px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+a.tag:hover {
+  background: rgba(232, 129, 58, 0.22);
 }
 
 /* ─── Page headings ─── */
