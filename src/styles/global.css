@@ -148,6 +148,8 @@ footer a:hover { color: var(--accent); }
 }
 
 .post-title-link:hover { color: var(--accent); }
+.post-title-link:visited { color: #a3a3a3; }
+.post-title-link:visited:hover { color: var(--accent); }
 
 /* ─── Tags ─── */
 
@@ -280,6 +282,36 @@ a.tag:hover {
 
 .prose strong { color: var(--text); }
 
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  margin: 1.5rem 0;
+  display: block;
+  overflow-x: auto;
+}
+
+.prose th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  white-space: nowrap;
+}
+
+.prose td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  color: #e5e5e5;
+  vertical-align: top;
+}
+
+.prose tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
 /* ─── Article header ─── */
 
 .article-header {
@@ -362,7 +394,7 @@ a.tag:hover {
 .about-content {
   font-size: 0.9375rem;
   line-height: 1.8;
-  color: #d4d4d4;
+  color: #e5e5e5;
 }
 
 .about-content p { margin-bottom: 1.25rem; }
@@ -375,6 +407,25 @@ a.tag:hover {
 }
 
 .about-content a:hover { text-decoration-color: var(--accent); }
+
+/* ─── Skip link ─── */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--accent);
+  color: var(--bg);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 4px 4px;
+  text-decoration: none;
+  z-index: 100;
+  transition: top 0.15s;
+}
+
+.skip-link:focus { top: 0; }
 
 /* ─── Utilities ─── */
 
@@ -390,12 +441,35 @@ a.tag:hover {
   border-width: 0;
 }
 
+@media (max-width: 768px) {
+  nav { gap: 1.25rem; }
+
+  .prose h1 { font-size: 1.25rem; }
+  .prose h2 { font-size: 1.125rem; }
+  .article-header h1 { font-size: 1.25rem; }
+
+  .home-hero h1 { font-size: 1.125rem; }
+}
+
 @media (max-width: 480px) {
   .post-item {
     grid-template-columns: 1fr;
     gap: 0.2rem;
   }
 
-  header { padding: 1.5rem 0 1.5rem; margin-bottom: 2.5rem; }
+  nav { gap: 1rem; }
+  nav a { font-size: 0.8125rem; }
+
+  header { padding: 1.5rem 0; margin-bottom: 2.5rem; }
   footer { margin-top: 4rem; }
+
+  .article-header h1 { font-size: 1.125rem; }
+  .page-header h1 { font-size: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }

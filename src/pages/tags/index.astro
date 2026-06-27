@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('posts', ({ data }) => !data.draft);
+
+const tagMap = posts.reduce((acc, post) => {
+  post.data.tags.forEach(tag => {
+    acc[tag] = (acc[tag] ?? 0) + 1;
+  });
+  return acc;
+}, {} as Record<string, number>);
+
+const tags = Object.entries(tagMap).sort((a, b) => b[1] - a[1]);
+---
+
+<BaseLayout title="Categorías — Angelo Ortiz" description="Todos los temas y categorías del blog.">
+  <div class="page-header">
+    <h1>Categorías</h1>
+    <p>{tags.length} categorías · {posts.length} posts</p>
+  </div>
+
+  <ul class="tag-index">
+    {tags.map(([tag, count]) => (
+      <li>
+        <a href={`/tags/${tag}`} class="tag-index-item">
+          <span class="tag">#{tag}</span>
+          <span class="tag-count">{count} {count === 1 ? 'post' : 'posts'}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
+
+<style>
+  .tag-index {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .tag-index-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+  }
+
+  .tag-index-item:first-of-type { border-top: 1px solid var(--border); }
+
+  .tag-index li:first-child .tag-index-item { border-top: 1px solid var(--border); }
+
+  .tag-count {
+    font-size: 0.8125rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+  }
+
+  .tag-index-item:hover .tag { background: rgba(232, 129, 58, 0.22); }
+  .tag-index-item:hover .tag-count { color: var(--text); }
+</style>

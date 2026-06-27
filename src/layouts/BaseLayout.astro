@@ -42,25 +42,32 @@ const siteName = 'Angelo Ortiz Vega';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" type="application/rss+xml" title={siteName} href="/rss.xml" />
   </head>
-  <body>
+  <body id="top">
+    <a href="#main-content" class="skip-link">Saltar al contenido</a>
+
     <div class="site-wrapper">
       <header>
         <div class="inner">
           <a href="/" class="site-name">Angelo Ortiz</a>
           <nav aria-label="Navegación principal">
             <a href="/writing" aria-current={currentPath.startsWith('/writing') ? 'page' : undefined}>Escritura</a>
+            <a href="/tags" aria-current={currentPath.startsWith('/tags') ? 'page' : undefined}>Categorías</a>
+            <a href="/buscar" aria-current={currentPath === '/buscar' ? 'page' : undefined}>Buscar</a>
             <a href="/about" aria-current={currentPath === '/about' ? 'page' : undefined}>Acerca de</a>
           </nav>
         </div>
       </header>
 
-      <main>
+      <main id="main-content">
         <slot />
       </main>
 
       <footer>
         <p>© {new Date().getFullYear()} Angelo Ortiz Vega</p>
-        <a href="/rss.xml">RSS</a>
+        <div style="display:flex;gap:1.25rem;">
+          <a href="https://github.com/angelortizv" target="_blank" rel="noopener">GitHub</a>
+          <a href="/rss.xml">RSS</a>
+        </div>
       </footer>
     </div>
   </body>
