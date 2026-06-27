@@ -6,18 +6,27 @@ interface Props {
   date: Date;
   description?: string;
   tags?: string[];
+  slug?: string;
 }
 
-const { title, date, description, tags = [] } = Astro.props;
+const { title, date, description, tags = [], slug } = Astro.props;
 
 const formatted = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
   month: 'short',
   day: '2-digit',
 }).format(date);
+
+const canonicalUrl = slug ? new URL(`/writing/${slug}/`, Astro.site).href : undefined;
 ---
 
-<BaseLayout title={`${title} — Angelo Ortiz`} description={description}>
+<BaseLayout
+  title={`${title} — Angelo Ortiz`}
+  description={description}
+  ogType="article"
+  ogUrl={canonicalUrl}
+  publishedTime={date.toISOString()}
+>
   <a href="/writing" class="back-link">← Writing</a>
 
   <article>

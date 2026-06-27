@@ -4,10 +4,22 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  ogType?: 'website' | 'article';
+  ogUrl?: string;
+  publishedTime?: string;
 }
 
-const { title, description = 'Angelo Ortiz Vega — writing on technology, ideas, and things worth remembering.' } = Astro.props;
+const {
+  title,
+  description = 'Angelo Ortiz Vega — writing on technology, ideas, and things worth remembering.',
+  ogType = 'website',
+  ogUrl,
+  publishedTime,
+} = Astro.props;
+
 const currentPath = Astro.url.pathname;
+const canonicalUrl = ogUrl ?? new URL(currentPath, Astro.site).href;
+const siteName = 'Angelo Ortiz Vega';
 ---
 
 <!doctype html>
@@ -16,9 +28,19 @@ const currentPath = Astro.url.pathname;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
     <title>{title}</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={siteName} />
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="alternate" type="application/rss+xml" title="Angelo Ortiz Vega" href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title={siteName} href="/rss.xml" />
   </head>
   <body>
     <div class="site-wrapper">
