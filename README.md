@@ -1,17 +1,25 @@
 # Angelo Ortiz Vega
 
-> Full Stack AI Engineer | Tech Lead | University Lecturer | Building AI-Powered Products, Scalable Systems & Automation Solutions
+**Full Stack AI Engineer & Team Lead** — building AI systems that run in production, at scale.
 
-I build software that creates real business value.
+Currently at [Creai](https://github.com/angeloortiz-creai), leading development on a logistics
+platform handling 220K weekly trips across 8.5K drivers and 10K vehicles. I built the real-time
+monitoring system unifying telemetry, vehicle, driver, and incident data, and designed the ETA
+prediction algorithm behind it.
 
-As a Full Stack AI Engineer, Tech Lead, and University Lecturer from Costa Rica 🇨🇷, I specialize in designing and delivering AI-powered products, scalable software systems, and automation solutions that solve real-world operational challenges.
+Most of my work lives where machine learning meets infrastructure: wiring LLM agents, ML pipelines,
+and optimization algorithms into legacy systems and real-time data streams — plus the full-stack
+surface that makes them usable.
 
-My experience spans full-stack development, software architecture, machine learning, cloud-native systems, and technical leadership. Throughout my career, I have built and shipped production-grade applications, APIs, automation platforms, and AI-enabled solutions across startups, consulting projects, and technology companies.
+Computer Engineer from [TEC](https://www.tec.ac.cr/), with a background spanning FPGA/Verilog,
+CUDA, and computer architecture. I also teach AI, Machine Learning, and Full Stack Engineering
+at the university level.
 
-Currently, I work as a Full Stack AI Engineer at [**Creai**](https://github.com/angeloortiz-creai) , contributing to mission-critical logistics systems and AI-driven products. I also teach Artificial Intelligence, Machine Learning, and Full Stack Development at the university level, helping bridge industry practices with the next generation of engineers.
+---
 
-**Keywords:** *Computer Engineer, Artificial Intelligence, Machine Learning, Full Stack Development, Python (Flask/FastAPI), AWS, Data Engineering, Automation, University Lecturer.*
+**Working with**
+`Python` `FastAPI` `React` `TypeScript` `Node.js` `PHP/Laravel` `Docker` `AWS` `PostgreSQL`
 
-## Get in touch
+**Interested in** real-time systems, applied ML, and software that touches the physical world.
 
-[![Email](https://img.shields.io/badge/angelo@angelortizv.com-email-D14836?style=for-the-badge&logo=gmail&logoColor=white&labelColor=101010)](mailto:angelo@angelortizv.com)
+📍 Costa Rica · [LinkedIn](https://www.linkedin.com/in/angelortizv/)
