@@ -1,46 +1,277 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
-import PostListItem from '../components/PostListItem.astro';
-import { getReadingTime } from '../utils/readingTime';
-import { getContentType } from '../utils/contentType';
-
-const allPosts = await getCollection('posts', ({ data }) => !data.draft);
-const recent = allPosts
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 5);
+const title = 'Angelo Ortiz Vega — Blog en pausa';
+const description =
+  'Este blog está en pausa. Si buscas a Angelo Ortiz Vega, mi sitio actual es angelortizv.me.';
+const target = 'https://www.angelortizv.me';
 ---
 
-<BaseLayout title="Angelo Ortiz Vega" description="Blog personal de Angelo Ortiz Vega. Escribo sobre tecnología, ideas, notas de libros y cosas que vale la pena recordar.">
-  <section class="home-hero">
-    <div class="home-hero-accent" aria-hidden="true"></div>
-    <h1>Angelo Ortiz Vega</h1>
-    <p>
-      Costarricense. Construyo software, enseño y pienso en voz alta por escrito.
-      Esto último es lo que pasa aquí.
-    </p>
-  </section>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />
+    <meta name="theme-color" content="#060010" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" href="/fonts/Calibre-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+  </head>
+  <body>
+    <div class="aurora" aria-hidden="true"></div>
 
-  {recent.length > 0 && (
-    <section>
-      <p class="home-section-title">Escritura reciente</p>
-      <ul class="post-list">
-        {recent.map(post => (
-          <PostListItem
-            slug={post.slug}
-            title={post.data.title}
-            date={post.data.date}
-            description={post.data.description}
-            tags={post.data.tags}
-            readingTime={getReadingTime(post.body)}
-            contentType={getContentType(post.data.tags)}
-          />
-        ))}
-      </ul>
+    <main>
+      <p class="pill">Blog en pausa</p>
 
-      <p class="section-cta">
-        <a href="/writing" class="link-accent">Ver todo →</a>
+      <h1>
+        <span class="blur">Angelo</span> <span class="gradient">Ortiz.</span>
+      </h1>
+
+      <p class="lead">
+        Este blog está en pausa, pero los artículos siguen disponibles. Si estás buscando
+        <strong>angelortizv.me</strong>, ahí vive mi sitio actual: proyectos, experiencia y
+        contacto.
       </p>
-    </section>
-  )}
-</BaseLayout>
+
+      <div class="actions">
+        <a class="btn" href={target} rel="noopener">angelortizv.me <span aria-hidden="true">→</span></a>
+        <a class="btn ghost" href="/writing">Leer el archivo</a>
+      </div>
+    </main>
+
+    <footer>© {new Date().getFullYear()} Angelo Ortiz Vega</footer>
+  </body>
+</html>
+
+<style is:global>
+  @font-face {
+    font-family: 'Calibre';
+    src: url('/fonts/Calibre-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Calibre';
+    src: url('/fonts/Calibre-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Calibre';
+    src: url('/fonts/Calibre-Semibold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'SF Mono';
+    src: url('/fonts/SFMono-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  :root {
+    --bg: #060010;
+    --text: #9a94b8;
+    --light: #bcb7d6;
+    --bright: #ece9ff;
+    --signal: #a78bfa;
+    --soft: #c4b5fd;
+    --tint: rgba(167, 139, 250, 0.14);
+    --outline: rgba(167, 139, 250, 0.18);
+    --grid: rgba(167, 139, 250, 0.06);
+    --glow: rgba(124, 92, 255, 0.35);
+    --contrast: #ffffff;
+    --aurora: 1;
+    --sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
+    --mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #faf8ff;
+      --text: #5a5478;
+      --light: #352f55;
+      --bright: #140d30;
+      --signal: #6d28d9;
+      --soft: #8b5cf6;
+      --tint: rgba(109, 40, 217, 0.1);
+      --outline: rgba(109, 40, 217, 0.18);
+      --grid: rgba(109, 40, 217, 0.05);
+      --glow: rgba(109, 40, 217, 0.2);
+      --contrast: #140d30;
+      --aurora: 0.5;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    margin: 0;
+    min-height: 100%;
+  }
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 19px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--tint);
+    color: var(--signal);
+  }
+
+  .aurora {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: var(--aurora);
+    background:
+      radial-gradient(60vmax 45vmax at 8% -5%, rgba(124, 92, 255, 0.32), transparent 70%),
+      radial-gradient(55vmax 45vmax at 100% 38%, rgba(109, 77, 255, 0.2), transparent 70%),
+      radial-gradient(50vmax 40vmax at 25% 108%, rgba(167, 139, 250, 0.16), transparent 70%);
+  }
+  .aurora::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 20%, transparent 75%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 20%, transparent 75%);
+  }
+
+  main {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 80px 25px;
+  }
+
+  .pill {
+    margin: 0 0 24px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--tint);
+    color: var(--signal);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0;
+    color: var(--bright);
+    font-size: clamp(56px, 9vw, 96px);
+    font-weight: 200;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+  .gradient {
+    background: linear-gradient(110deg, var(--signal) 0%, var(--soft) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .blur {
+    display: inline-block;
+    animation: blur-in 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  .lead {
+    max-width: 540px;
+    margin: 28px 0 0;
+    color: var(--text);
+  }
+  .lead strong {
+    color: var(--light);
+    font-weight: 400;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 44px;
+  }
+  .btn {
+    display: inline-block;
+    padding: 1.25rem 2rem;
+    border: 1px solid var(--signal);
+    border-radius: 999px;
+    color: var(--contrast);
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .btn:hover,
+  .btn:focus-visible {
+    background: var(--signal);
+    color: var(--bg);
+    box-shadow: 0 0 32px var(--glow);
+    outline: none;
+  }
+
+  .btn.ghost {
+    border-color: var(--outline);
+    color: var(--light);
+  }
+  .btn.ghost:hover,
+  .btn.ghost:focus-visible {
+    border-color: var(--signal);
+  }
+
+  footer {
+    position: relative;
+    z-index: 1;
+    padding: 24px;
+    text-align: center;
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  @keyframes blur-in {
+    from {
+      opacity: 0;
+      filter: blur(12px);
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+      transform: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .blur {
+      animation: none;
+    }
+    .btn {
+      transition: none;
+    }
+  }
+</style>
