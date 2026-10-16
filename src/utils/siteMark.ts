@@ -6,7 +6,7 @@ const MARK_PATHS = `
 
 export function siteMarkGroup(
   transform: string,
-  colors: { accent: string; text: string } = { accent: '#e8813a', text: '#f5f5f5' },
+  colors: { accent: string; text: string } = { accent: "#a78bfa", text: "#ece9ff" },
 ): string {
   const paths = MARK_PATHS
     .replace(/ACCENT/g, colors.accent)

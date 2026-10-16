@@ -42,17 +42,17 @@ export function buildOgSvg(title: string, subtitle = 'Angelo Ortiz Vega'): strin
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0a0a0a"/>
-      <stop offset="100%" stop-color="#111111"/>
+      <stop offset="0%" stop-color="#060010"/>
+      <stop offset="100%" stop-color="#1b1236"/>
     </linearGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
   <rect x="0" y="0" width="1200" height="630" fill="none" stroke="#262626" stroke-width="1"/>
   ${siteMarkGroup('translate(1088, 44) scale(2.5)')}
-  <text font-family="Georgia, 'Times New Roman', serif" font-size="54" font-weight="600" fill="#f5f5f5" letter-spacing="-0.02em">${titleLines}</text>
-  <text x="80" y="415" font-family="system-ui, sans-serif" font-size="26" fill="#888888">${escapeXml(subtitle)}</text>
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="54" font-weight="600" fill="#ece9ff" letter-spacing="-0.02em">${titleLines}</text>
+  <text x="80" y="415" font-family="system-ui, sans-serif" font-size="26" fill="#9a94b8">${escapeXml(subtitle)}</text>
   <line x1="80" y1="460" x2="240" y2="460" stroke="#262626" stroke-width="1"/>
-  <text x="80" y="530" font-family="ui-monospace, monospace" font-size="20" letter-spacing="0.06em" fill="#e8813a">ANGELORTIZV.COM</text>
+  <text x="80" y="530" font-family="ui-monospace, monospace" font-size="20" letter-spacing="0.06em" fill="#a78bfa">ANGELORTIZV.COM</text>
 </svg>`;
 }
 

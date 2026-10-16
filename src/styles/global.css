@@ -1,35 +1,82 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@font-face { font-family: 'Calibre'; src: url('/fonts/Calibre-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Calibre'; src: url('/fonts/Calibre-Medium.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Calibre'; src: url('/fonts/Calibre-Semibold.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+@font-face { font-family: 'SF Mono'; src: url('/fonts/SFMono-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
 
 :root,
 [data-theme="dark"] {
-  --bg:           #0a0a0a;
-  --bg-subtle:    #111111;
-  --text:         #f5f5f5;
-  --text-muted:   #888888;
-  --text-body:    #e5e5e5;
-  --text-visited: #a3a3a3;
-  --accent:       #e8813a;
-  --accent-tint:  rgba(232, 129, 58, 0.12);
-  --border:       #262626;
-  --scrollbar:    #333333;
-  --font-sans:    'Inter', system-ui, sans-serif;
-  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
-  --font-mono:    'JetBrains Mono', monospace;
+  --bg:           #060010;
+  --bg-subtle:    #0e0824;
+  --text:         #ece9ff;
+  --text-muted:   #9a94b8;
+  --text-body:    #bcb7d6;
+  --text-visited: #9a94b8;
+  --accent:       #a78bfa;
+  --accent-tint:  rgba(167, 139, 250, 0.14);
+  --accent-soft:  #c4b5fd;
+  --border:       rgba(167, 139, 250, 0.18);
+  --scrollbar:    #4b4568;
+  --aurora:       1;
+  --grid:         rgba(167, 139, 250, 0.06);
+  --font-sans:    'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
+  --font-display: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
+  --font-mono:    'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
   --max-width:    680px;
 }
 
 [data-theme="light"] {
-  --bg:           #fafafa;
-  --bg-subtle:    #f0f0f0;
-  --text:         #1a1a1a;
-  --text-muted:   #666666;
-  --text-body:    #2a2a2a;
-  --text-visited: #777777;
-  --accent:       #c96a28;
-  --accent-tint:  rgba(201, 106, 40, 0.1);
-  --border:       #e0e0e0;
-  --scrollbar:    #cccccc;
+  --bg:           #faf8ff;
+  --bg-subtle:    #ece6ff;
+  --text:         #140d30;
+  --text-muted:   #5a5478;
+  --text-body:    #352f55;
+  --text-visited: #8b84ab;
+  --accent:       #6d28d9;
+  --accent-tint:  rgba(109, 40, 217, 0.1);
+  --accent-soft:  #8b5cf6;
+  --border:       rgba(109, 40, 217, 0.18);
+  --scrollbar:    #8b84ab;
+  --aurora:       0.5;
+  --grid:         rgba(109, 40, 217, 0.05);
 }
+
+/* Aurora background, same as the portfolio */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+body::before {
+  opacity: var(--aurora);
+  background:
+    radial-gradient(60vmax 45vmax at 8% -5%, rgba(124, 92, 255, 0.32), transparent 70%),
+    radial-gradient(55vmax 45vmax at 100% 38%, rgba(109, 77, 255, 0.2), transparent 70%),
+    radial-gradient(50vmax 40vmax at 25% 108%, rgba(167, 139, 250, 0.16), transparent 70%);
+}
+body::after {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 20%, transparent 75%);
+}
+
+.pause-notice {
+  margin: 1.25rem 0 0;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  background: var(--accent-tint);
+  color: var(--text-body);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+.pause-notice a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -314,7 +361,7 @@ footer a:hover { color: var(--accent); }
 }
 
 a.tag:hover {
-  background: rgba(232, 129, 58, 0.22);
+  background: rgba(167, 139, 250, 0.28);
 }
 
 .tag--lg {
@@ -371,7 +418,7 @@ a.tag:hover {
 .prose a {
   color: var(--accent);
   text-decoration: underline;
-  text-decoration-color: rgba(232, 129, 58, 0.4);
+  text-decoration-color: rgba(167, 139, 250, 0.45);
   text-underline-offset: 3px;
   transition: text-decoration-color 0.15s;
 }
@@ -659,7 +706,7 @@ a.tag:hover {
 .about-content a {
   color: var(--accent);
   text-decoration: underline;
-  text-decoration-color: rgba(232, 129, 58, 0.4);
+  text-decoration-color: rgba(167, 139, 250, 0.45);
   text-underline-offset: 3px;
 }
 
