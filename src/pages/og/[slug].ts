@@ -1,11 +1,12 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { buildOgPng } from '../../utils/ogImage';
+import { buildHomeOgPng, buildOgPng } from '../../utils/ogImage';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
 
   return [
+    { params: { slug: 'home' }, props: { home: true, title: '', subtitle: '' } },
     {
       params: { slug: 'default' },
       props: {
@@ -24,8 +25,8 @@ export async function getStaticPaths() {
 }
 
 export const GET: APIRoute = async ({ props }) => {
-  const { title, subtitle } = props as { title: string; subtitle: string };
-  const png = await buildOgPng(title, subtitle);
+  const { title, subtitle, home } = props as { title: string; subtitle: string; home?: boolean };
+  const png = home ? await buildHomeOgPng() : await buildOgPng(title, subtitle);
 
   return new Response(new Uint8Array(png), {
     headers: {
