@@ -3,6 +3,28 @@ const title = 'Angelo Ortiz Vega — Blog en pausa';
 const description =
   'Este blog está en pausa. Si buscas a Angelo Ortiz Vega, mi sitio actual es angelortizv.me.';
 const target = 'https://www.angelortizv.me';
+const email = 'angelo@angelortizv.com';
+const ogImage = new URL('/og/home', Astro.site).href;
+const socials = [
+  {
+    name: 'GitHub',
+    url: 'https://github.com/angelortizv',
+    paths: ['M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22'],
+  },
+  {
+    name: 'Instagram',
+    url: 'https://www.instagram.com/angelortizv',
+    paths: ['M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z', 'M17.5 6.5h.01'],
+    rect: { x: 2, y: 2, width: 20, height: 20, rx: 5 },
+  },
+  {
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/angelortizv',
+    paths: ['M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z'],
+    rect: { x: 2, y: 9, width: 4, height: 12 },
+    circle: { cx: 4, cy: 4, r: 2 },
+  },
+];
 ---
 
 <!doctype html>
@@ -20,30 +42,90 @@ const target = 'https://www.angelortizv.me';
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
   </head>
   <body>
-    <div class="aurora" aria-hidden="true"></div>
+    <div class="aurora" aria-hidden="true">
+      <div class="grid"><canvas id="dot-grid"></canvas></div>
+    </div>
 
     <main>
-      <p class="pill">Blog en pausa</p>
+      <div class="pills">
+        <p class="pill clock" id="local-time" hidden>
+          <span class="dot" aria-hidden="true"></span>
+          <span id="local-time-text"></span>
+        </p>
+        <p class="pill">Blog en pausa</p>
+      </div>
 
       <h1>
         <span class="blur">Angelo</span> <span class="gradient">Ortiz.</span>
       </h1>
 
       <p class="lead">
-        Este blog está en pausa, pero los artículos siguen disponibles. Si estás buscando
+        Este blog está en pausa por ahora. Si estás buscando
         <strong>angelortizv.me</strong>, ahí vive mi sitio actual: proyectos, experiencia y
         contacto.
       </p>
 
       <div class="actions">
         <a class="btn" href={target} rel="noopener">angelortizv.me <span aria-hidden="true">→</span></a>
-        <a class="btn ghost" href="/writing">Leer el archivo</a>
       </div>
+
+      <ul class="socials" aria-label="Redes">
+        {socials.map((s) => (
+          <li>
+            <a href={s.url} aria-label={s.name} target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                {s.rect && <rect {...s.rect} />}
+                {s.circle && <circle {...s.circle} />}
+                {s.paths.map((d) => <path d={d} />)}
+              </svg>
+            </a>
+          </li>
+        ))}
+      </ul>
     </main>
 
+    <div class="email-side">
+      <a href={`mailto:${email}`}>{email}</a>
+    </div>
+
     <footer>© {new Date().getFullYear()} Angelo Ortiz Vega</footer>
+
+    <script>
+      import { initDotGrid } from '../scripts/dotGrid.js';
+
+      // Live Costa Rica time, same pill as the portfolio hero (client-only on purpose)
+      const clock = document.getElementById('local-time');
+      const clockText = document.getElementById('local-time-text');
+      const tick = () => {
+        const parts = new Intl.DateTimeFormat('es-CR', {
+          timeZone: 'America/Costa_Rica',
+          weekday: 'short',
+          hour: '2-digit',
+          minute: '2-digit',
+          hourCycle: 'h23',
+        }).formatToParts(new Date());
+        const get = (type: string) => parts.find((p) => p.type === type)?.value ?? '';
+        if (clock && clockText) {
+          clockText.textContent = `Cartago ${get('weekday').replace('.', '')} ${get('hour')}:${get('minute')} · UTC−6`;
+          clock.hidden = false;
+        }
+      };
+      tick();
+      window.setInterval(tick, 15000);
+
+      // Interactive dot grid; falls back to the static CSS dots without WebGL2
+      const canvas = document.getElementById('dot-grid') as HTMLCanvasElement | null;
+      if (canvas && initDotGrid(canvas)) {
+        document.documentElement.dataset.dots = 'gl';
+      }
+    </script>
   </body>
 </html>
 
@@ -81,7 +163,6 @@ const target = 'https://www.angelortizv.me';
     --soft: #c4b5fd;
     --tint: rgba(167, 139, 250, 0.14);
     --outline: rgba(167, 139, 250, 0.18);
-    --grid: rgba(167, 139, 250, 0.06);
     --glow: rgba(124, 92, 255, 0.35);
     --contrast: #ffffff;
     --aurora: 1;
@@ -98,7 +179,6 @@ const target = 'https://www.angelortizv.me';
       --soft: #8b5cf6;
       --tint: rgba(109, 40, 217, 0.1);
       --outline: rgba(109, 40, 217, 0.18);
-      --grid: rgba(109, 40, 217, 0.05);
       --glow: rgba(109, 40, 217, 0.2);
       --contrast: #140d30;
       --aurora: 0.5;
@@ -144,10 +224,8 @@ const target = 'https://www.angelortizv.me';
     content: '';
     position: absolute;
     inset: 0;
-    background-image:
-      linear-gradient(var(--grid) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-    background-size: 64px 64px;
+    background-image: radial-gradient(circle, var(--tint) 1.5px, transparent 1.6px);
+    background-size: 32px 32px;
     -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 20%, transparent 75%);
     mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 20%, transparent 75%);
   }
@@ -166,8 +244,14 @@ const target = 'https://www.angelortizv.me';
     padding: 80px 25px;
   }
 
-  .pill {
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     margin: 0 0 24px;
+  }
+  .pill {
+    margin: 0;
     padding: 6px 14px;
     border-radius: 999px;
     background: var(--tint);
@@ -176,6 +260,25 @@ const target = 'https://www.angelortizv.me';
     font-size: 12px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+  }
+
+  .pill.clock {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--outline);
+    color: var(--light);
+    white-space: nowrap;
+  }
+  .pill.clock[hidden] {
+    display: none;
+  }
+  .pill .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--signal);
+    animation: dot-pulse 2s ease-in-out infinite;
   }
 
   h1 {
@@ -234,13 +337,69 @@ const target = 'https://www.angelortizv.me';
     outline: none;
   }
 
-  .btn.ghost {
-    border-color: var(--outline);
-    color: var(--light);
+  .socials {
+    display: flex;
+    gap: 6px;
+    margin: 36px 0 0 -10px;
+    padding: 0;
+    list-style: none;
   }
-  .btn.ghost:hover,
-  .btn.ghost:focus-visible {
-    border-color: var(--signal);
+  .socials a {
+    display: block;
+    padding: 10px;
+    color: var(--text);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .socials a:hover,
+  .socials a:focus-visible {
+    color: var(--signal);
+    transform: translateY(-3px);
+    outline: none;
+  }
+  .socials svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+
+  /* vertical email on the right edge, as in the portfolio */
+  .email-side {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    .email-side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+      right: 40px;
+      bottom: 0;
+      z-index: 1;
+    }
+    .email-side::after {
+      content: '';
+      width: 1px;
+      height: 90px;
+      background: var(--outline);
+    }
+    .email-side a {
+      margin: 20px auto;
+      padding: 10px;
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 11px;
+      line-height: 17px;
+      letter-spacing: 0.1em;
+      writing-mode: vertical-rl;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .email-side a:hover,
+    .email-side a:focus-visible {
+      color: var(--signal);
+      transform: translateY(-3px);
+      outline: none;
+    }
   }
 
   footer {
@@ -254,6 +413,30 @@ const target = 'https://www.angelortizv.me';
     letter-spacing: 0.1em;
   }
 
+  .aurora .grid {
+    position: absolute;
+    inset: 0;
+    -webkit-mask-image: radial-gradient(ellipse 90% 85% at 50% 30%, #000 25%, transparent 88%);
+    mask-image: radial-gradient(ellipse 90% 85% at 50% 30%, #000 25%, transparent 88%);
+  }
+  .aurora .grid canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  html[data-dots='gl'] .aurora::after {
+    display: none;
+  }
+
+  @keyframes dot-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.35;
+    }
+  }
   @keyframes blur-in {
     from {
       opacity: 0;
@@ -267,10 +450,13 @@ const target = 'https://www.angelortizv.me';
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    .blur {
+    .blur,
+    .pill .dot {
       animation: none;
     }
-    .btn {
+    .btn,
+    .socials a,
+    .email-side a {
       transition: none;
     }
   }
