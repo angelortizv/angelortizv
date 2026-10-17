@@ -17,7 +17,6 @@
   --border:       rgba(167, 139, 250, 0.18);
   --scrollbar:    #4b4568;
   --aurora:       1;
-  --grid:         rgba(167, 139, 250, 0.06);
   --font-sans:    'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
   --font-display: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
   --font-mono:    'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
@@ -37,7 +36,6 @@
   --border:       rgba(109, 40, 217, 0.18);
   --scrollbar:    #8b84ab;
   --aurora:       0.5;
-  --grid:         rgba(109, 40, 217, 0.05);
 }
 
 /* Aurora background, same as the portfolio */
@@ -57,13 +55,13 @@ body::before {
     radial-gradient(50vmax 40vmax at 25% 108%, rgba(167, 139, 250, 0.16), transparent 70%);
 }
 body::after {
-  background-image:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 64px 64px;
+  background-image: radial-gradient(circle, var(--accent-tint) 1.5px, transparent 1.6px);
+  background-size: 32px 32px;
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 20%, transparent 75%);
   mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 20%, transparent 75%);
 }
+/* the interactive WebGL grid (home page) replaces the static dots */
+html[data-dots="gl"] body::after { display: none; }
 
 .pause-notice {
   margin: 1.25rem 0 0;
